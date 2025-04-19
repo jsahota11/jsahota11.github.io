@@ -5,4 +5,7 @@ import { defineConfig } from 'astro/config';
 export default defineConfig({
     site: 'https://jsahota11.github.io',
     base: 'jsahota11.github.io',
+
+    output: 'static',
+    outDir: './dist',
 });
