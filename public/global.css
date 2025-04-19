@@ -1,0 +1,39 @@
+* {
+    box-sizing: border-box;
+  }
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: #CAA661;
+    color: black;
+}
+
+.portrait{
+    display: block;
+    max-width: fit-content;
+    height: auto;
+}
+
+#title{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: sticky;
+} 
+
+nav{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    position: sticky;
+    top: 0;
+}
+
+p, .needsPad {
+    padding-left: 2rem;
+    padding-right: 2rem;
+}
+

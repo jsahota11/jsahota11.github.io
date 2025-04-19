@@ -1,6 +1,9 @@
 # build output
 dist/
 
+# photoshop files
+psds/
+
 # generated types
 .astro/
 
