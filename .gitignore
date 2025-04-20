@@ -10,6 +10,9 @@ psds/
 # dependencies
 node_modules/
 
+# tailwind stuff
+public/node_modules/
+
 # logs
 npm-debug.log*
 yarn-debug.log*
