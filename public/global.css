@@ -1,17 +1,10 @@
-* {
-    box-sizing: border-box;
-  }
-
 body {
     font-family: 'Inter', sans-serif;
-    background-color: #CAA661;
-    color: black;
-}
-
-.portrait{
-    display: block;
-    max-width: fit-content;
-    height: auto;
+    
+    background-color: #CAA661; 
+    background-image: linear-gradient(to bottom right, #ff7dd1, #d373ff); 
+    background-image: linear-gradient(to bottom right, #ffa991, #ffb759); 
+    color: black; 
 }
 
 #title{
@@ -23,11 +16,9 @@ body {
 
 nav{
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center;
     width: 100%;
-    padding-left: 2rem;
-    padding-right: 2rem;
     position: sticky;
     top: 0;
 }
@@ -37,3 +28,44 @@ p, .needsPad {
     padding-right: 2rem;
 }
 
+.clickable{
+    background-color: white;
+    border-radius: 4px;
+}
+
+.home-excerpt{
+    display: inline-flex;
+    padding: 0;
+    margin: 0;
+    width: 70%;
+    max-width: 600px;
+}
+
+.home-portrait{
+    display: inline-flex;
+    padding: 0;
+    margin: 0;
+    width: 30%;
+    height: auto;
+    max-width: 400px;
+
+}
+
+.portrait{
+    max-width: 100%;
+}
+
+.home-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.contact-container{
+    width: 50%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: normal;
+}
