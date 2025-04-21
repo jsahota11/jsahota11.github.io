@@ -1,0 +1,106 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap');
+@import "tailwindcss";
+
+
+/* @theme {
+    --font-display: "Inter", "sans-serif";
+} */
+
+
+body {
+    @apply text-lg;
+    font-family: "Inter", sans-serif;
+    background-image: linear-gradient(to bottom,rgb(0, 0, 0), #b83060); 
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    color: white; 
+}
+
+h1{
+    @apply text-4xl font-bold mt-8 mb-6;
+}
+
+/*
+
+
+
+
+:root {
+}
+
+#title{
+    @apply flex justify-center items-center;
+     display: flex;
+    justify-content: center;
+    align-items: center;
+    position: sticky; 
+} 
+
+nav{
+    @apply flex justify-around items-center w-full sticky top-0;
+     display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    position: sticky;
+    top: 0; 
+}
+
+.clickable{
+    @apply bg-white rounded-sm;
+
+     background-color: white;
+    border-radius: 4px; 
+}
+
+p, .needsPad {
+    @apply p-[2rem];
+    padding-left: 2rem;
+    padding-right: 2rem; 
+}
+
+.home-excerpt{
+    @apply inline-flex p-0 m-0 w-7/10 max-w-[600px];
+
+    /* display: inline-flex;
+    padding: 0;
+    margin: 0;
+    width: 70%;
+    max-width: 600px; 
+}
+
+.home-portrait{
+    @apply inline-flex p-0 m-0 w-3/10 h-auto max-w-[400px];
+
+    display: inline-flex;
+    padding: 0;
+    margin: 0;
+    width: 30%;
+    height: auto;
+    max-width: 400px; 
+
+}
+
+.portrait{
+    @apply max-w-full;
+    max-width: 100%;
+}
+
+.home-container{
+    @apply flex flex-row justify-around items-center;
+    /* display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.contact-container{
+    @apply flex flex-row justify-around w-1/2;
+    /* width: 50%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: normal;
+}
+
+*/
