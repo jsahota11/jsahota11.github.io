@@ -11,6 +11,7 @@
   "dependencies": {
     "@tailwindcss/typography": "^0.5.16",
     "@tailwindcss/vite": "^4.1.4",
+    "alpinejs": "^3.14.9",
     "astro": "^5.7.4"
   },
   "devDependencies": {

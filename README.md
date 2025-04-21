@@ -6,6 +6,6 @@
 
 ##### TODO:
 * Fix the repo so edits are on main, deployments on gh-pages
-* Fix the oversized photo on About
+* Figure out page transitions with AlpineJS
 * Add things to do to todo.
 

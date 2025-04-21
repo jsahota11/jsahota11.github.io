@@ -17,11 +17,20 @@ const {title, local} = Astro.props;
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="generator" content={Astro.generator} />
 		<title>{title}</title>
+		<script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.14.8/dist/cdn.min.js"></script>
 	</head>
-	<body>
+	<body class="font-inter">
 		<Navbar />
 
-		<main id="page-content">
+
+		<div
+			x-data="{ show: false }"
+			x-init="show = true"
+			x-transition:enter="transition ease-out duration-500 transform"
+      		x-transition:enter-start="opacity-0 translate-x-10"
+      		x-transition:enter-end="opacity-100 translate-x-0"
+      		class="px-6 py-4"
+		>
 
 			<div class="flex justify-center items-center">
 				<h1>
@@ -31,7 +40,7 @@ const {title, local} = Astro.props;
 	
 			<slot />
 
-		</main>
+		</div>
 		
 	</body>
 </html>
@@ -44,3 +53,5 @@ const {title, local} = Astro.props;
 		height: 100%;
 	}
 </style>
+
+
