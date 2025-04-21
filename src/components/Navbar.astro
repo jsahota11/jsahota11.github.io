@@ -1,11 +1,13 @@
 ---
 import Button from "./Button.astro"
 ---
-<nav>
-    <Button label="Home" link="/"/>
-    <Button label="About me" link="/about"/>
-    <Button label="Contact details" link="/contact"/>
-    <Button label="Site details" link="/site_details"/>
-    <Button label="Updates" link="/updates"/>
-    <Button label="Works and Experience" link="/work"/>
-</nav>
+<div class="bg-white text-black sticky top-0">
+    <nav class="flex justify-around items-center w-full sticky top-0">
+        <Button label="Home" link="/"/>
+        <Button label="About me" link="/about"/>
+        <Button label="Contact details" link="/contact"/>
+        <Button label="Site details" link="/site_details"/>
+        <Button label="Updates" link="/updates"/>
+        <Button label="Works and Experience" link="/work"/>
+    </nav>
+</div>
