@@ -7,18 +7,30 @@
 } */
 
 
+/* for sliding */
+#content {
+    transition: transform 0.5s ease;
+}
+
+.hidden-left {
+    transform: translateX(-100%);
+}
+
+.hidden-right {
+    transform: translateX(100%);
+}
+
+
+
 body {
     @apply text-lg;
     font-family: "Inter", sans-serif;
-    background-image: linear-gradient(to bottom,rgb(0, 0, 0), #b83060); 
+    background-image: linear-gradient(to bottom, #FFFFFF , #a2c7fe); 
     background-repeat: no-repeat;
     background-attachment: fixed;
-    color: white; 
+    color: black; 
 }
 
-h1{
-    @apply text-4xl font-bold mt-8 mb-6;
-}
 
 /*
 

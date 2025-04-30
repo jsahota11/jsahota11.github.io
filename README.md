@@ -6,6 +6,7 @@
 
 ##### TODO:
 * Fix the repo so edits are on main, deployments on gh-pages
-* Fix the oversized photo on About
+* Fix line breaks so text does not look goofy
+* Integrate flexbox more to make it more mobile-friendly
 * Add things to do to todo.
-
+* Add different transition that works with non-Chromium API (or just remove it entirely)

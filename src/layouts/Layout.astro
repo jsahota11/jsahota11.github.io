@@ -1,6 +1,7 @@
 ---
 import Navbar from "../components/Navbar.astro"
 import "../styles/global.css";
+import {ClientRouter, slide} from "astro:transitions";
 const {title, local} = Astro.props;
 ---
 
@@ -17,18 +18,23 @@ const {title, local} = Astro.props;
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="generator" content={Astro.generator} />
 		<title>{title}</title>
+
 	</head>
-	<body>
+
+
+	<body class="font-inter">
 		<Navbar />
 
-		<main id="page-content">
+		<ClientRouter />
+
+		<main transition:animate={slide({duration:"0.5s"})}>
 
 			<div class="flex justify-center items-center">
-				<h1>
+				<h1 class="text-4xl font-bold mt-8 mb-6">
 					{local}
 				</h1>
 			</div>
-	
+
 			<slot />
 
 		</main>
@@ -44,3 +50,5 @@ const {title, local} = Astro.props;
 		height: 100%;
 	}
 </style>
+
+
