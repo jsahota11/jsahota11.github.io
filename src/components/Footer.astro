@@ -1,8 +1,58 @@
-<footer class="w-full py-6 text-center text-gray-600 dark:text-gray-400 border-t">
-  <p>© {new Date().getFullYear()} Jatinder Sahota. All rights reserved.</p>
-  <p class="mt-2">
-    <a href="https://github.com/jsahota11" target="_blank">GitHub</a> •
-    <a href="https://linkedin.com/in/jatinder-sahota" target="_blank">LinkedIn</a>
-  </p>
-</footer>
+---
+import Logo from "./Logo.astro";
+---
 
+<footer class="w-full p-3 text-white bg-black">
+  <div class="flex flex-wrap justify-center items-center gap-16">
+    <!-- Quick Links / Pages -->
+    <div class="flex flex-wrap gap-8 justify-end">
+      <div class="inline-block text-left text-sm">
+        <a href="/about" class="font-bold">About ---</a>
+        <ul class="list-disc list-inside marker:text-blue-900">
+          <li>Hobbies</li>
+          <li>Achievements</li>
+          <li>Goals</li>
+        </ul>
+      </div>
+
+      <div class="inline-block text-left text-sm">
+        <a href="/updates" class="font-bold">Updates ---</a>
+        <ul class="list-disc list-inside marker:text-blue-900">
+          <li>New School Year</li>
+          <li>Website Changes</li>
+        </ul>
+      </div>
+
+      <Logo size="80" />
+      <!-- more quick links -->
+
+      <div class="inline-block text-left text-sm">
+        <a href="/work" class="font-bold">Experience ---</a>
+        <ul class="list-disc list-inside marker:text-blue-900">
+          <li>Data Annotation</li>
+          <li>USRA</li>
+          <li>Education</li>
+        </ul>
+      </div>
+
+      <div class="inline-block text-left text-sm">
+        <a href="/projects" class="font-bold">Projects ---</a>
+        <ul class="list-disc list-inside marker:text-blue-900">
+          <li>Graph Generator</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- Contact / Social Links -->
+  <div class="text-center text-sm flex justify-center items-center">
+    <p class="mt-2">
+      &copy; <span id="year"></span> Jatinder Sahota. All rights reserved •
+      <a href="mailto:jsahota751@gmail.com" target="_blank">Email Me!</a> •
+      <a href="https://github.com/jsahota11" target="_blank">GitHub</a> •
+      <a href="https://linkedin.com/in/jatinder-sahota" target="_blank"
+        >LinkedIn</a
+      >
+    </p>
+  </div>
+</footer>

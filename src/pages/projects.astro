@@ -1,0 +1,29 @@
+---
+import ProjectCard from "../components/ProjectCard.astro";
+const projects = [
+    {
+        title: "Graph Visualizer",
+        images: ["/graph1.png", "/graph2.png"],
+        description: "A graph manipulation tool with visualization features.",
+        github: "https://github.com/yourrepo",
+    },
+    {
+        title: "Portfolio Site",
+        images: ["/portfolio1.png", "/portfolio2.png"],
+        description: "Personal portfolio built with Astro and TailwindCSS.",
+    },
+];
+---
+
+<div class="flex overflow-x-auto space-x-6 p-6">
+    <ProjectCard
+        title="Graph Visualizer"
+        images={[
+            "/graph-visual-form.png",
+            "/graph-visual-construct.png",
+            "/graph-visual-alt-construct.png",
+        ]}
+        description="A tool to visualize graphs built using different input parameters."
+        github="https://github.com/jsahota11/graph-generator"
+    />
+</div>
