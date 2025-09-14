@@ -1,0 +1,87 @@
+---
+const { title, images, description, github } = Astro.props;
+---
+
+<div
+    class="relative group h-max flex-shrink-0 rounded-xl overflow-hidden shadow-lg"
+>
+    <!-- Carousel -->
+    <div
+        class="w-150 h-100 relative overflow-hidden cursor-pointer"
+        id="carousel"
+    >
+        {
+            images.map((src, i) => (
+                <img
+                    src={src}
+                    alt={title + " image " + i}
+                    class="absolute top-0 left-0 w-full h-full object-cover transition-opacity duration-500"
+                    style={`opacity: ${i === 0 ? 1 : 0}`}
+                    data-index={i}
+                />
+            ))
+        }
+    </div>
+
+    <!-- Hover Blurb -->
+    <div
+        class="absolute bottom-0 left-0 right-0 bg-black/70 text-white text-sm p-3 transform translate-y-full group-hover:translate-y-0 transition-transform duration-300"
+    >
+        <h3 class="font-bold text-lg">{title}</h3>
+        <p class="mt-1">{description}</p>
+        {
+            github && (
+                <a
+                    href={github}
+                    target="_blank"
+                    class="inline-block mt-2 text-blue-300 underline"
+                >
+                    View on GitHub
+                </a>
+            )
+        }
+    </div>
+</div>
+
+<script type="module">
+    const carousel = document.getElementById("carousel");
+    const imgs = Array.from(carousel.querySelectorAll("img"));
+    let current = 0;
+
+    // Function to show the next image
+    function showImage(nextIndex) {
+        imgs[current].style.opacity = 0;
+        imgs[nextIndex].style.opacity = 1;
+        current = nextIndex;
+    }
+
+    // Auto-cycle setup
+    let autoCycleInterval = 5000; // 5 seconds
+    let autoCycleTimer = setInterval(() => {
+        const nextIndex = (current + 1) % imgs.length;
+        showImage(nextIndex);
+    }, autoCycleInterval);
+
+    let resumeTimeout; // Timeout for resuming auto-cycle
+
+    // Click handler
+    carousel.addEventListener("click", () => {
+        // Show next image immediately
+        const nextIndex = (current + 1) % imgs.length;
+        showImage(nextIndex);
+
+        // Pause the auto-cycle
+        clearInterval(autoCycleTimer);
+
+        // Clear any previous resume timeout
+        if (resumeTimeout) clearTimeout(resumeTimeout);
+
+        // Resume auto-cycle after 10 seconds of inactivity
+        resumeTimeout = setTimeout(() => {
+            autoCycleTimer = setInterval(() => {
+                const nextIndex = (current + 1) % imgs.length;
+                showImage(nextIndex);
+            }, autoCycleInterval);
+        }, 10000); // 10 seconds
+    });
+</script>

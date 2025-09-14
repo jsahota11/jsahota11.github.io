@@ -1,9 +1,9 @@
 ---
-const { title, images, description, github } = Astro.props;
+const { title, images, description } = Astro.props;
 ---
 
 <div
-    class="relative group w-80 h-60 flex-shrink-0 rounded-xl overflow-hidden shadow-lg"
+    class="relative group h-max flex-shrink-0 rounded-xl overflow-hidden shadow-lg"
 >
     <!-- Slideshow -->
     <div class="relative w-full h-full overflow-hidden">
@@ -17,16 +17,6 @@ const { title, images, description, github } = Astro.props;
     >
         <h3 class="font-bold text-lg">{title}</h3>
         <p class="mt-1">{description}</p>
-        {
-            github && (
-                <a
-                    href={github}
-                    target="_blank"
-                    class="inline-block mt-2 text-blue-300 underline"
-                >
-                    View on GitHub
-                </a>
-            )
-        }
+        {(<p>Not available on GitHub.</p>)}
     </div>
 </div>
