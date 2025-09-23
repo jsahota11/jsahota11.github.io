@@ -1,19 +1,26 @@
 /** @type {import('tailwindcss').Config} */
-import { interFont } from './src/themes/fonts';
-
 export default {
   content: [
-    "./*.html",         // Adjust if your HTML is in subfolders
-    "./**/*.html",
-        './src/**/*.{html,js,astro,ts}',
-    './components/**/*.{astro,js,ts}',
-    './layouts/**/*.{astro,js,ts}',
+    './src/**/*.{astro,js,ts,jsx,tsx}',
   ],
   theme: {
     extend: {
-      fontFamily: interFont,
+      colors: {
+        sitebg: '#FFFFFF',        // main background
+        bg: '#000000',             // optional dark background
+        text: '#3C1518',           // primary text
+        textSecondary: '#69140E',  // secondary text
+        accent: '#A44200',         // buttons & highlights
+        accentHover: '#D58936',    // hover color
+        highlight: '#F2F3AE',      // soft yellow
+        deep: '#3C1518',            // footer/nav
+        flame: '#E63900',           // flame red
+      },
+      fontFamily: {
+        inter: ['Inter', 'sans-serif'],
+      },
     },
   },
-  plugins: [require(`@tailwindcss/typography`)],
+  plugins: [],
 };
 

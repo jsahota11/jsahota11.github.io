@@ -1,6 +1,15 @@
 ---
 const { label, link } = Astro.props;
 ---
-<div class ="border-solid rounded-md border-2 border-[#a2c7fe]">
-    <a href={link} class="nav-link"><button class="p-1">{label}</button></a>
+
+<div class="border-solid rounded-md border-2 border-flame m-1">
+    <a href={link} class="nav-link">
+        <!-- hovering and clicking will change the state of the button -->
+        <button
+            class="p-1 w-32 h-10 bg-accent text-white hover:bg-accentHover hover:text-textSecondary active:bg-highlight active:text-black
+            transition-colors duration-200"
+        >
+            {label}
+        </button>
+    </a>
 </div>
