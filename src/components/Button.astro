@@ -5,11 +5,11 @@ const { label, link } = Astro.props;
 const isActive = Astro.url.pathname === link;
 ---
 
-<div class="border-solid rounded-md border-2 border-[#a2c7fe] m-1">
+<div class="border-solid rounded-md border-2 border-flame m-1">
     <a href={link} class="nav-link">
         <!-- hovering and clicking will change the state of the button -->
         <button
-            class="p-1 w-32 h-10 hover:bg-[#a2c7fe] hover:text-white active:bg-[#82b4ff] active:text-white
+            class="p-1 w-32 h-10 bg-accent hover:bg-accentHover hover:text-textSecondary active:bg-flame active:text-accentHover
             transition-colors duration-200"
         >
             {label}

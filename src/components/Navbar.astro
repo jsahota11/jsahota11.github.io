@@ -5,11 +5,13 @@ import Logo from "./Logo.astro";
 // the logo will be flush left, and all buttons flush right
 ---
 
-<div class="text-black sticky top bg-pink-400 flex justify-around">
+<div class="sticky top flex justify-around">
     <div class="m-2">
         <Logo size="60" />
     </div>
-    <nav class="flex justify-end items-center w-full sticky top-0 m-1">
+    <nav
+        class="flex justify-end items-center w-full sticky top-0 m-1 text-text bg-deep"
+    >
         <Button label="About" link="/about" />
         <Button label="Updates" link="/updates" />
         <Button label="Experience" link="/work" />

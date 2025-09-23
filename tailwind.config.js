@@ -1,34 +1,23 @@
-/** @type {import('tailwindcss').Config} */
-import { interFont } from './src/themes/fonts';
-
+// tailwind.config.js
 export default {
   content: [
-    "./src/**/*.{astro,html,js,ts,jsx,tsx,vue,svelte}",
-    "./components/**/*.{astro,js,ts,jsx,tsx}",
-    "./layouts/**/*.{astro,js,ts,jsx,tsx}",
+    "./src/**/*.{astro,js,ts,jsx,tsx}", // make sure all your source files are included
   ],
   theme: {
     extend: {
-      fontFamily: interFont,
       colors: {
-        bg: "#F2F3AE",
-        text: "#3C1518",         // primary text
-        textSecondary: "#69140E",// secondary text
-        accent: "#A44200",       // buttons and highlights
-        link: "#D58936",         // links and hover state
+            sitebg: "#FFFFFF",        /** main background **/
+        bg: "#000000",          /** optional dark background **/
+        text: "#3C1518",          /** primary text **/
+        textSecondary: "#69140E", /** secondary text / strong text **/
+        accent: "#A44200",        /** buttons & highlights **/
+        accentHover: "#D58936",   /** button hover, link hover **/
+        highlight: "#F2F3AE",    /** soft yellow background section **/
+        deep: "#3C1518",         /** dark footer/nav background **/
+        flame: "#E63900",        /** flame red (matches logo) **/
       },
-      typography: (theme) => ({
-      DEFAULT: {
-        css: {
-          color: theme("colors.text"),
-          a: { color: theme("colors.link") },
-          strong: { color: theme("colors.textSecondary") },
-        },
-      },
-    }),
     },
   },
-  plugins: [require('@tailwindcss/typography')],
+  plugins: [],
 };
-
 
