@@ -2,22 +2,22 @@
 import Logo from "./Logo.astro";
 ---
 
-<footer class="w-full p-3">
+<footer class="w-full p-3 bg-deep">
   <div class="flex flex-wrap justify-center items-center gap-16">
     <!-- Quick Links / Pages -->
     <div class="flex flex-wrap gap-8 justify-end">
-      <div class="inline-block text-left text-sm">
+      <div class="inline-block text-left text-sm text-highlight">
         <a href="/about" class="font-bold">About ---</a>
-        <ul class="list-disc list-inside marker:text-blue-900">
+        <ul class="list-none list-inside text-white">
           <li><a href="/about/#hobbies">Hobbies</a></li>
           <li><a href="/about/#achievements">Achievements</a></li>
           <li><a href="/about/#goals">Goals</a></li>
         </ul>
       </div>
 
-      <div class="inline-block text-left text-sm">
+      <div class="inline-block text-left text-sm text-highlight">
         <a href="/updates" class="font-bold">Updates ---</a>
-        <ul class="list-disc list-inside marker:text-blue-900">
+        <ul class="list-none list-inside text-white">
           <li><a href="/updates/#general">General</a></li>
           <li><a href="/updates/#new-school-year">New School Year</a></li>
           <li><a href="/updates/#site-changes">Site Changes</a></li>
@@ -27,18 +27,18 @@ import Logo from "./Logo.astro";
       <Logo size="80" />
       <!-- more quick links -->
 
-      <div class="inline-block text-left text-sm">
+      <div class="inline-block text-left text-sm text-highlight">
         <a href="/work" class="font-bold">Experience ---</a>
-        <ul class="list-disc list-inside marker:text-blue-900">
+        <ul class="list-none list-inside text-white">
           <li><a href="/work/#da">DataAnnotation</a></li>
           <li>USRA</li>
           <li>Education</li>
         </ul>
       </div>
 
-      <div class="inline-block text-left text-sm">
+      <div class="inline-block text-left text-sm text-highlight">
         <a href="/projects" class="font-bold">Projects ---</a>
-        <ul class="list-disc list-inside marker:text-blue-900">
+        <ul class="list-none list-inside text-white">
           <li><a href="/projects/#graph-generator">Graph Visualizer</a></li>
           <li>
             <a href="/projects/#exfat-fs-shell">exFAT FS Reader + Shell</a>
@@ -50,7 +50,7 @@ import Logo from "./Logo.astro";
 
   <!-- Contact / Social Links -->
   <div class="text-center text-sm flex justify-center items-center">
-    <p class="mt-2">
+    <p class="mt-2 text-highlight">
       &copy; <span id="year"></span> Jatinder Sahota. All rights reserved •
       <a href="mailto:jsahota751@gmail.com" target="_blank">Email Me!</a> •
       <a href="https://github.com/jsahota11" target="_blank">GitHub</a> •
