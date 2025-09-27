@@ -1,0 +1,11 @@
+---
+const { title, logo, description } = Astro.props;
+---
+
+<div class="flex justify-between p-5">
+    <div>
+        <h1>{title}</h1>
+        <p>{description}</p>
+    </div>
+    <img src={logo} alt={title} class="w-40 object-cover" />
+</div>

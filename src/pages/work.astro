@@ -1,32 +1,34 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import CompanyCard from "../components/CompanyCard.astro";
 ---
 
 <Layout title="Works" local="Experiences">
     <div class="p-[2rem]">
-        <p>
-            I am currently working at DataAnnotation remotely, and have been
-            with them since April 2024! The work consists of asking AI models to
-            satisfy prompts relevant to computer science or math,<br />
-            and then analyze, edit, and rate responses provided by the models. Typically,
-            my favoured projects are regarding negative constraints with the aim
-            of causing<br />
-            the models to fail in specific ways. My work often entails asking models
-            to generate code to fulfil a certain task given a set of constraints,
-            and then I edit/debug their code,<br />
-            run sufficient testing of the code before and after any edits, and then
-            document/provide feedback regarding the failures of the model for future
-            training.<br />
-            This work has exposed me to a multitude of languages and various applied
-            programming paradigms such as programming and operating with API endpoints,<br
-            />
-            setting up and maintaining websites using different frameworks like React.js
-            or Next.js, as well as more applied and practical scripting with Bash.<br
-            /><br />
-
-            I will add more information later regarding work experience, but as
-            for now, this is the most relevant to my field.
-        </p>
+        <CompanyCard
+            title="DataAnnotation"
+            logo="/da.webp"
+            description="DataAnnotation provides high-quality data labeling and evaluation services to improve artificial intelligence systems. As a contractor, I evaluated, debugged, and validated AI-generated code across multiple programming languages, ensuring accuracy, functionality, and adherence to specifications."
+        />
+        <CompanyCard
+            title="Staples Canada"
+            logo="/staples.webp"
+            description="Staples is a leading provider of office supplies, technology, and business solutions, committed to helping customers work smarter and more efficiently. In my role, I delivered customer service and technical support in a fast-paced retail environment, assisting with technology products, troubleshooting, and workplace solutions."
+        />
+        <CompanyCard
+            title="Undergraduate Student Research Award -- Dept. of CS, University of Manitoba"
+            logo="/csdept.webp"
+            description="The Department of Computer Science is dedicated to advancing knowledge in computing through research, innovation, and teaching. Through a research award, I investigated computational geometry and optimization problems, developing algorithms and mathematical techniques under faculty supervision."
+        />
+        <CompanyCard
+            title="Math Help Centre Tutor -- Dept. of Math, University of Manitoba"
+            logo="/mathdept1.webp"
+            description="The Department of Mathematics fosters learning and discovery in pure and applied mathematics, supporting students across disciplines. As a tutor in the Math Help Centre, I assisted undergraduate students in calculus, linear algebra, and introductory courses, clarifying concepts and guiding problem-solving strategies."
+        />
+        <CompanyCard
+            title="Calculus 2 Teaching Assistant -- Dept. of Math, University of Manitoba"
+            logo="/mathdept2.webp"
+            description="The Department of Mathematics is committed to providing high-quality mathematical education and fostering student success. As a teaching assistant for Calculus II, I led tutorials, graded assignments, and supported students in mastering advanced calculus topics such as integration, series convergence, and area approximations."
+        />
     </div>
 </Layout>
-
