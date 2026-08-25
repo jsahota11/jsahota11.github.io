@@ -1,0 +1,21 @@
+---
+import type {Update} from "../../types/content";
+
+interface Props {
+    update: Update;
+}
+
+const {update} = Astro.props;
+const formattedDate = new Intl.DateTimeFormat("en-CA", {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+    timeZone: "UTC",
+}).format(new Date(`${update.date}T00:00:00Z`));
+---
+
+<article id={update.id}>
+    <time datetime={update.date} class="uppercase">
+        {formattedDate}
+    </time>
+</article>

@@ -4,7 +4,6 @@ export interface NavigationItem {
   label: string;
   href: string;
 }
-
 export interface LinkItem extends NavigationItem {
   description: string;
   newTab?: boolean;
@@ -30,4 +29,11 @@ export interface Experience {
   description: string;
   logo: ImageMetadata;
   logoAlt: string;
+}
+
+export interface Update {
+  id: string;
+  date: string;
+  title: string;
+  summary: string;
 }
