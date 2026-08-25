@@ -1,0 +1,56 @@
+---
+import Navbar from "../components/layout/Navbar.astro";
+import "../styles/global.css";
+import Footer from "../components/layout/Footer.astro";
+import { site } from "../data/site";
+
+interface Props {
+	title: string;
+	heading: string;
+	description?: string;
+	noindex?: boolean;
+}
+
+const {
+	title,
+	heading,
+	description = site.description,
+	noindex = false,
+} = Astro.props;
+
+const docTitle = title === "Home" ? site.name : `${title} | ${site.name}`;
+const canonicalUrl = new URL(Astro.url.pathname, Astro.site ?? site.url);
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<meta name="generator" content={Astro.generator} />
+		<meta name="description" content={description} />
+		{noindex && <meta name="robots" content="noindex" />}
+
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<link rel="canonical" href={canonicalUrl} />
+
+		<meta property="og:type" content="website" />
+		<meta property="og:title" content={docTitle} />
+		<meta property="og:description" content={description} />
+		<meta property="og:url" content={canonicalUrl} />
+		<meta property="og:site_name" content={site.name} />
+
+		<link href="/src/styles/global.css" rel="stylesheet" />
+		<title>{docTitle}</title>
+	</head>
+
+	<body class="font-inter text-text bg-sitebg">
+		<Navbar />
+
+		<main id="main-content">
+			<slot />
+		</main>
+
+		<Footer />
+	</body>
+</html>

@@ -1,34 +1,18 @@
 ---
-import Layout from "../layouts/Layout.astro";
-import ProjectCardRepo from "../components/ProjectCardRepo.astro";
-import ProjectCard from "../components/ProjectCard.astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import ProjectCard from "../components/cards/ProjectCard.astro";
+import { projects } from "../data/projects";
+import PageContainer from "../components/layout/PageContainer.astro";
 ---
 
-<Layout title="Projects" local="Projects">
-    <div class="flex overflow-x-auto space-x-6 p-6 justify-around items-center">
-        <ProjectCardRepo
-            id="graph-generator"
-            title="Graph Visualizer"
-            images={[
-                "/graph-visual-form.png",
-                "/graph-visual-construct.png",
-                "/graph-visual-alt-construct.png",
-            ]}
-            description="A tool to visualize graphs built using different input parameters."
-            github="https://github.com/jsahota11/graph-generator"
-        />
-        <ProjectCard
-            id="exfat-fs-shell"
-            title="exFAT File Reader and Shell (Coursework)"
-            images={["/exfat-shell-output.png"]}
-            description="An exFAT-formatted file reader and shell to simulate different GNU core utilities with various volumes."
-        />
-
-        <ProjectCard
-            id="greed-game"
-            title="Greed - Console-based game (Coursework)"
-            images={[""]}
-            description="A console-based board game built with Java utilising important OOP paradigms like encapsulation, inheritance and polymorphism, and abstraction."
-        />
-    </div>
-</Layout>
+<BaseLayout
+    title="Projects"
+    heading="Projects"
+    description="Selected software projects spanning graph visualization, file systems, and object-oriented design."
+>
+    <PageContainer>
+        <div>
+            {projects.map((project) => <ProjectCard project={project} />)}
+        </div>
+    </PageContainer>
+</BaseLayout>

@@ -1,22 +1,89 @@
 ---
-const { title, images, description } = Astro.props;
+import { Image } from "astro:assets";
+import type { Project } from "../../types/content";
+
+interface Props {
+    project: Project;
+}
+
+const { project } = Astro.props;
+const hasMultipleImages = project.images.length > 1;
 ---
 
-<div
-    class="relative group h-max flex-shrink-0 rounded-xl overflow-hidden shadow-lg"
->
-    <!-- Slideshow -->
-    <div class="relative w-full h-full overflow-hidden">
-        <!-- Replace with carousel component -->
-        <img src={images[0]} alt={title} class="w-full h-full object-cover" />
+<article id={project.id}>
+    <div data-project-carousel={hasMultipleImages ? "" : undefined}>
+        {
+            project.images.length > 0 ? (
+                project.images.map((image, index) => (
+                    <Image
+                        src={image.src}
+                        alt={image.alt}
+                        data-carousel-slide
+                        class:list={[index === 0 ? "opacity-100" : "opacity-0"]}
+                    />
+                ))
+            ) : (
+                <div>Preview not available</div>
+            )
+        }
+        {
+            hasMultipleImages && (
+                <>
+                    <span data-carousel-status>1/{project.images.length}</span>
+                    <button data-carousel-next>Next</button>
+                </>
+            )
+        }
     </div>
 
-    <!-- Hover Blurb -->
-    <div
-        class="absolute bottom-12 left-0 right-0 bg-deep/70 text-white text-sm p-3 transform translate-y-full group-hover:translate-y-12 transition-transform duration-300 rounded-xl"
-    >
-        <h3 class="font-bold text-lg">{title}</h3>
-        <p class="mt-1">{description}</p>
-        {(<p>Not available on GitHub.</p>)}
+    <div>
+        <h2>{project.title}</h2>
+        <p>{project.description}</p>
+        {
+            project.repositoryUrl ? (
+                <a href={project.repositoryUrl}>
+                    View on GitHub <span>↗</span>
+                </a>
+            ) : (
+                project.note && <p>{project.note}</p>
+            )
+        }
     </div>
-</div>
+</article>
+
+<script>
+    document
+        .querySelectorAll<HTMLElement>("[data-project-carousel]")
+        .forEach((carousel) => {
+            const slides = Array.from(
+                carousel.querySelectorAll<HTMLElement>("[data-carousel-slide]"),
+            );
+            const nextButton = carousel.querySelector<HTMLButtonElement>(
+                "[data-carousel-next]",
+            );
+            const status = carousel.querySelector<HTMLElement>(
+                "[data-carousel-status]",
+            );
+
+            if (slides.length < 2 || !nextButton || !status) return;
+
+            let currentIndex = 0;
+            const showSlide = (nextIndex: number) => {
+                slides[currentIndex].classList.replace(
+                    "opacity-100",
+                    "opacity-0",
+                );
+
+                currentIndex = nextIndex;
+                slides[currentIndex].classList.replace(
+                    "opacity-0",
+                    "opacity-100",
+                );
+                status.textContent = `${currentIndex + 1}/${slides.length}`;
+            };
+
+            nextButton.addEventListener("click", () =>
+                showSlide((currentIndex + 1) % slides.length),
+            );
+        });
+</script>
