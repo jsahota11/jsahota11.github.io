@@ -1,0 +1,38 @@
+---
+import { primaryNavigation } from "../../data/site";
+import Logo from "./Logo.astro";
+
+const normalizePath = (path: string) => path.replace(/\/+$/, "") || "/";
+const currentPath = normalizePath(Astro.url.pathname);
+---
+
+<header>
+  <div>
+    <Logo size={68} />
+
+    <nav>
+      <ul>
+        {
+          primaryNavigation.map((item) => {
+            const isCurrent = currentPath === normalizePath(item.href);
+
+            return (
+              <li>
+                <a
+                  href={item.href}
+                  class:list={[
+                    isCurrent
+                      ? "border-highlight bg-highlight text-deep"
+                      : "border-flame bg-accent hover:border-highlight hover:bg-accent-hover hover:text-deep text-white",
+                  ]}
+                >
+                  {item.label}
+                </a>
+              </li>
+            );
+          })
+        }
+      </ul>
+    </nav>
+  </div>
+</header>

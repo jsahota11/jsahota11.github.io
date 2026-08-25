@@ -1,0 +1,40 @@
+---
+import { Image } from "astro:assets";
+import portrait from "../../assets/images/profile/portrait.webp";
+---
+
+<section>
+    <div>
+        <p>
+            Hi there! I’m Jatinder, a Computer Science and Mathematics Joint
+            Honours Co-op student at the University of Manitoba, minoring in
+            Statistics.
+        </p>
+        <p>
+            My interests span discrete algorithms, computational geometry,
+            scientific computing, and low-level systems programming. I
+            especially enjoy problems that connect mathematical reasoning and
+            analysis with programming.
+        </p>
+        <p>
+            This site brings together my projects, research, work, teaching
+            experience, and education, as well as a few useful documents. It
+            will keep evolving as I learn and build more, so I encourage you to
+            check back every now and then!
+        </p>
+
+        <div>
+            <a href="/projects/"> View projects </a>
+            <a href="/about/"> More about me </a>
+        </div>
+    </div>
+
+    <figure>
+        <Image
+            src={portrait}
+            alt="Portrait of Jatinder Sahota"
+            widths={[320, 480, 640]}
+            loading="eager"
+        />
+    </figure>
+</section>

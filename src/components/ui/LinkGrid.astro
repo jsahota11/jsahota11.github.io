@@ -1,0 +1,29 @@
+---
+import type { LinkItem } from "../../types/content";
+
+interface Props {
+  items: LinkItem[];
+}
+
+const { items } = Astro.props;
+---
+
+<ul>
+  {
+    items.map((item) => (
+      <li>
+        <a
+          href={item.href}
+          target={item.newTab ? "_blank" : undefined}
+          rel={item.newTab ? "noopener noreferrer" : undefined}
+        >
+          <span>
+            <span>{item.label}</span>
+            <span>{item.description}</span>
+          </span>
+          <span>{item.newTab ? "↗" : "→"}</span>
+        </a>
+      </li>
+    ))
+  }
+</ul>

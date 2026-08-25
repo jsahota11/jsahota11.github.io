@@ -1,11 +1,18 @@
 ---
-const { size = 32 } = Astro.props;
-const hoverScale = (size + 20) / size; // since tailwind cant do dynamic
+import logo from "../../assets/images/brand/logo.svg";
+import { site } from "../../data/site";
+
+interface Props {
+  size?: number;
+}
+
+const { size = 64 } = Astro.props;
+const height = Math.round((size * logo.height) / logo.width);
 ---
 
 <a
   href="/"
-  class="flex items-center space-x-2 transition-transform duration-300 ease-out origin-top-left hover:scale-125"
+  class="flex origin-top-left items-center space-x-2 transition-transform duration-300 ease-out hover:scale-125"
 >
-  <img src="/logo.svg" alt="Logo" width={size} height={size} />
+  <img src={logo.src} alt="" width={size} height={height} />
 </a>
