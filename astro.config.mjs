@@ -1,12 +1,9 @@
 import { defineConfig } from 'astro/config';
+import tailwindcss from "@tailwindcss/vite";
 
 export default defineConfig({
-  vite: {
-    css: {
-      preprocessorOptions: {
-        css: {},
-      },
-    },
-  },
+  site: "https://jsahota11.github.io",
+  output: "static",
+  vite: { plugins: [tailwindcss()] }
 });
 
