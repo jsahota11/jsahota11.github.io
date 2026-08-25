@@ -1,6 +1,8 @@
 ---
 import PageContainer from "../components/layout/PageContainer.astro";
+import ButtonLink from "../components/ui/ButtonLink.astro";
 import ContentSection from "../components/ui/ContentSection.astro";
+import { UI_TEXT } from "../constants/ui";
 import BaseLayout from "../layouts/BaseLayout.astro";
 ---
 
@@ -14,13 +16,11 @@ import BaseLayout from "../layouts/BaseLayout.astro";
     <ContentSection>
       <p>
         That link did not lead anywhere, but the rest of the site is still close
-        by!
+        by.
       </p>
-      <a
-        href="/"
-      >
-        Return home
-      </a>
+      <ButtonLink href="/">
+        {UI_TEXT.actions.returnHome}
+      </ButtonLink>
     </ContentSection>
   </PageContainer>
 </BaseLayout>

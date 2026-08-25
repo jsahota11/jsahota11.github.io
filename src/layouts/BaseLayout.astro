@@ -1,9 +1,10 @@
 ---
-import "../styles/global.css";
 import Footer from "../components/layout/Footer.astro";
-import { site } from "../data/site";
 import PageHeader from "../components/layout/PageHeader.astro";
 import SiteHeader from "../components/layout/SiteHeader.astro";
+import { THEME, UI_TEXT } from "../constants/ui";
+import { site } from "../data/site";
+import "../styles/global.css";
 
 interface Props {
 	title: string;
@@ -18,9 +19,9 @@ const {
 	description = site.description,
 	noindex = false,
 } = Astro.props;
-
-const docTitle = title === "Home" ? site.name : `${title} | ${site.name}`;
+const documentTitle = title === "Home" ? site.name : `${title} | ${site.name}`;
 const canonicalUrl = new URL(Astro.url.pathname, Astro.site ?? site.url);
+const themeStorageKey = THEME.storageKey;
 ---
 
 <!doctype html>
@@ -32,25 +33,54 @@ const canonicalUrl = new URL(Astro.url.pathname, Astro.site ?? site.url);
 		<meta name="description" content={description} />
 		{noindex && <meta name="robots" content="noindex" />}
 
+		<script is:inline define:vars={{ themeStorageKey }}>
+			(() => {
+				const root = document.documentElement;
+				const prefersDark = window.matchMedia(
+					"(prefers-color-scheme: dark)",
+				).matches;
+				let savedTheme = null;
+
+				try {
+					savedTheme = localStorage.getItem(themeStorageKey);
+				} catch {
+					// Fall back to the operating-system preference.
+				}
+
+				root.dataset.theme =
+					savedTheme === "light" || savedTheme === "dark"
+						? savedTheme
+						: prefersDark
+							? "dark"
+							: "light";
+			})();
+		</script>
+
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<link rel="canonical" href={canonicalUrl} />
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 
 		<meta property="og:type" content="website" />
-		<meta property="og:title" content={docTitle} />
+		<meta property="og:title" content={documentTitle} />
 		<meta property="og:description" content={description} />
 		<meta property="og:url" content={canonicalUrl} />
 		<meta property="og:site_name" content={site.name} />
 
-		<link href="/src/styles/global.css" rel="stylesheet" />
-		<title>{docTitle}</title>
+		<title>{documentTitle}</title>
 	</head>
 
-	<body class="font-inter text-text bg-sitebg">
-		<a href="#main-content">Skip to content</a>
+	<body class="flex min-h-screen flex-col">
+		<a
+			href="#main-content"
+			class="bg-highlight text-deep fixed top-3 left-3 z-[100] -translate-y-20 rounded-md px-4 py-2 font-bold transition-transform focus:translate-y-0"
+		>
+			{UI_TEXT.accessibility.skipToContent}
+		</a>
 
 		<SiteHeader />
 
-		<main id="main-content">
+		<main id="main-content" class="flex-1">
 			<PageHeader heading={heading} description={description} />
 			<slot />
 		</main>

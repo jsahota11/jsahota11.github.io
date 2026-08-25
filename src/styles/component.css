@@ -1,0 +1,30 @@
+@layer components {
+  .surface-card {
+    border: 1px solid color-mix(in oklab, var(--color-ink) 10%, transparent);
+    border-radius: var(--radius-card);
+    background-color: var(--color-surface);
+    box-shadow: var(--shadow-card);
+  }
+
+  .surface-card-interactive {
+    transition:
+      border-color 200ms,
+      box-shadow 200ms,
+      transform 200ms;
+  }
+
+  .elevation-card {
+    box-shadow: var(--shadow-card);
+  }
+
+  .elevation-header {
+    box-shadow: var(--shadow-header);
+  }
+
+  @media (hover: hover) {
+    .surface-card-interactive:hover {
+      box-shadow: var(--shadow-card-hover);
+      transform: translateY(-0.125rem);
+    }
+  }
+}

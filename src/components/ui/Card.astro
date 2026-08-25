@@ -1,0 +1,21 @@
+---
+interface Props {
+  id?: string;
+  padding?: "none" | "default";
+  class?: string;
+}
+
+const { id, padding = "default", class: className } = Astro.props;
+
+const paddingStyles = {
+  none: "",
+  default: "p-5 sm:p-8",
+} as const;
+---
+
+<article
+  id={id}
+  class:list={["surface-card scroll-mt-28", paddingStyles[padding], className]}
+>
+  <slot />
+</article>

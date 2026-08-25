@@ -10,18 +10,16 @@ const { id, title, class: className } = Astro.props;
 
 <section
   id={id}
-  class:list={[
-    className,
-  ]}
+  class:list={["surface-card scroll-mt-28 p-5 sm:p-8", className]}
 >
   {
     title && (
-      <h2>
+      <h2 class="text-ink-muted mb-4 text-2xl font-bold sm:text-3xl">
         {title}
       </h2>
     )
   }
-  <div>
+  <div class="text-ink/85 space-y-4 leading-8 text-pretty">
     <slot />
   </div>
 </section>

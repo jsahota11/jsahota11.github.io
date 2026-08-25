@@ -1,0 +1,100 @@
+---
+import { UI_TEXT } from "../../constants/ui";
+---
+
+<button
+  type="button"
+  hidden
+  data-theme-toggle
+  aria-label={UI_TEXT.theme.toggleLabel}
+  aria-pressed="false"
+  title={UI_TEXT.theme.switchToDark}
+  class="border-on-deep/20 text-on-deep hover:bg-on-deep/10 aria-pressed:border-highlight aria-pressed:bg-highlight aria-pressed:text-deep rounded-control inline-flex min-h-11 min-w-11 cursor-pointer items-center justify-center gap-2 border px-3 py-2 text-sm font-semibold transition-colors"
+>
+  <span data-theme-icon aria-hidden="true">{UI_TEXT.symbols.darkMode}</span>
+  <span class="hidden lg:inline">{UI_TEXT.theme.label}</span>
+</button>
+
+<script>
+  import { THEME, UI_TEXT, type Theme } from "../../constants/ui";
+
+  const root = document.documentElement;
+  const systemPreference = window.matchMedia("(prefers-color-scheme: dark)");
+  const buttons = document.querySelectorAll<HTMLButtonElement>(
+    "[data-theme-toggle]",
+  );
+
+  const isTheme = (value: string | null): value is Theme =>
+    value === THEME.light || value === THEME.dark;
+
+  const readStoredTheme = (): Theme | null => {
+    try {
+      const value = localStorage.getItem(THEME.storageKey);
+      return isTheme(value) ? value : null;
+    } catch {
+      return null;
+    }
+  };
+
+  const storeTheme = (theme: Theme) => {
+    try {
+      localStorage.setItem(THEME.storageKey, theme);
+    } catch {
+      // The selected theme still applies when storage is unavailable.
+    }
+  };
+
+  const updateButtons = (theme: Theme) => {
+    const darkModeIsActive = theme === THEME.dark;
+
+    buttons.forEach((button) => {
+      const icon = button.querySelector<HTMLElement>("[data-theme-icon]");
+
+      button.hidden = false;
+      button.setAttribute("aria-pressed", String(darkModeIsActive));
+      button.title = darkModeIsActive
+        ? UI_TEXT.theme.switchToLight
+        : UI_TEXT.theme.switchToDark;
+
+      if (icon) {
+        icon.textContent = darkModeIsActive
+          ? UI_TEXT.symbols.lightMode
+          : UI_TEXT.symbols.darkMode;
+      }
+    });
+  };
+
+  const applyTheme = (theme: Theme, persist = false) => {
+    root.dataset.theme = theme;
+    updateButtons(theme);
+
+    if (persist) storeTheme(theme);
+  };
+
+  const currentTheme = (): Theme =>
+    root.dataset.theme === THEME.dark ? THEME.dark : THEME.light;
+
+  updateButtons(currentTheme());
+
+  buttons.forEach((button) => {
+    button.addEventListener("click", () => {
+      const nextTheme =
+        currentTheme() === THEME.dark ? THEME.light : THEME.dark;
+      applyTheme(nextTheme, true);
+    });
+  });
+
+  systemPreference.addEventListener("change", (event) => {
+    if (readStoredTheme()) return;
+    applyTheme(event.matches ? THEME.dark : THEME.light);
+  });
+
+  window.addEventListener("storage", (event) => {
+    if (event.key !== THEME.storageKey) return;
+
+    const storedTheme = isTheme(event.newValue) ? event.newValue : null;
+    applyTheme(
+      storedTheme ?? (systemPreference.matches ? THEME.dark : THEME.light),
+    );
+  });
+</script>

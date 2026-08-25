@@ -1,20 +1,22 @@
 ---
 import ExperienceCard from "../components/cards/ExperienceCard.astro";
-import BaseLayout from "../layouts/BaseLayout.astro";
 import PageContainer from "../components/layout/PageContainer.astro";
 import { experiences } from "../data/experience";
+import BaseLayout from "../layouts/BaseLayout.astro";
 ---
 
 <BaseLayout
     title="Experience"
     heading="Experience"
-    description="Work, undergraduate research, tutoring/teaching experience, and education."
+    description="Work, undergraduate research, tutoring, and teaching experience."
 >
     <PageContainer>
-        {
-            experiences.map((experience) => (
-                <ExperienceCard experience={experience} />
-            ))
-        }
+        <div class="space-y-6">
+            {
+                experiences.map((experience) => (
+                    <ExperienceCard experience={experience} />
+                ))
+            }
+        </div>
     </PageContainer>
 </BaseLayout>

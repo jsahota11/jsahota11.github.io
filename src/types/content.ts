@@ -1,13 +1,15 @@
-import type {ImageMetadata} from "astro";
+import type { ImageMetadata } from "astro";
 
 export interface NavigationItem {
   label: string;
   href: string;
 }
+
 export interface LinkItem extends NavigationItem {
   description: string;
   newTab?: boolean;
 }
+
 export interface ProjectImage {
   src: ImageMetadata;
   alt: string;

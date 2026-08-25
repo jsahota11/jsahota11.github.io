@@ -1,39 +1,56 @@
 ---
 import { Image } from "astro:assets";
 import portrait from "../../assets/images/profile/portrait.webp";
+import { UI_TEXT } from "../../constants/ui";
+import ButtonLink from "../ui/ButtonLink.astro";
 ---
 
-<section>
-    <div>
+<section
+    class="grid items-center gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(16rem,24rem)]"
+>
+    <div
+        class="text-ink/85 space-y-6 text-base leading-8 text-pretty sm:text-lg"
+    >
         <p>
-            Hi there! I’m Jatinder, a Computer Science and Mathematics Joint
-            Honours Co-op student at the University of Manitoba, minoring in
+            Hey there! I’m Jatinder, a Computer Science and Mathematics Joint
+            Honours Co-op student at the University of Manitoba, with a minor in
             Statistics.
         </p>
         <p>
             My interests span discrete algorithms, computational geometry,
-            scientific computing, and low-level systems programming. I
-            especially enjoy problems that connect mathematical reasoning and
-            analysis with programming.
+            number theory, topology, and low-level systems programming. I
+            especially enjoy problems that connect mathematical reasoning with
+            careful, efficient implementation.
         </p>
         <p>
-            This site brings together my projects, research, work, teaching
-            experience, and education, as well as a few useful documents. It
-            will keep evolving as I learn and build more, so I encourage you to
-            check back every now and then!
+            This site brings together my projects, research, work and teaching
+            experience, and a few useful documents. It will keep evolving as I
+            learn and build more.
         </p>
 
-        <div>
-            <a href="/projects/"> View projects </a>
-            <a href="/about/"> More about me </a>
+        <div class="flex flex-col gap-3 pt-2 sm:flex-row sm:flex-wrap">
+            <ButtonLink href="/projects/" class="w-full sm:w-auto">
+                {UI_TEXT.actions.viewProjects}
+            </ButtonLink>
+            <ButtonLink
+                href="/about/"
+                variant="secondary"
+                class="w-full sm:w-auto"
+            >
+                {UI_TEXT.actions.moreAboutMe}
+            </ButtonLink>
         </div>
     </div>
 
-    <figure>
+    <figure
+        class="surface-card bg-canvas-soft mx-auto w-full max-w-sm overflow-hidden p-2"
+    >
         <Image
             src={portrait}
             alt="Portrait of Jatinder Sahota"
             widths={[320, 480, 640]}
+            sizes="(min-width: 1024px) 24rem, min(90vw, 24rem)"
+            class="aspect-[4/5] w-full rounded-xl object-cover"
             loading="eager"
         />
     </figure>

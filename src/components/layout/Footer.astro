@@ -1,39 +1,59 @@
 ---
+import { UI_TEXT } from "../../constants/ui";
 import { primaryNavigation, site, socialLinks } from "../../data/site";
 import Logo from "./Logo.astro";
 
 const year = new Date().getFullYear();
 ---
 
-<footer>
-  <div>
+<footer class="bg-deep text-on-deep mt-16">
+  <div
+    class="max-w-site mx-auto grid w-full gap-8 px-4 py-10 sm:px-6 md:grid-cols-[auto_1fr] md:items-center lg:px-8"
+  >
     <Logo size={80} />
-    <div>
-      <nav>
-        <ul>
+
+    <div class="space-y-6 md:text-right">
+      <nav aria-label={UI_TEXT.navigation.footerLabel}>
+        <ul class="flex flex-wrap gap-x-5 gap-y-3 md:justify-end">
           {
             primaryNavigation.map((item) => (
               <li>
-                <a href={item.href}>{item.label}</a>
+                <a
+                  class="text-highlight hover:text-on-deep inline-flex min-h-11 items-center text-sm font-semibold"
+                  href={item.href}
+                >
+                  {item.label}
+                </a>
               </li>
             ))
           }
         </ul>
       </nav>
 
-      <div>
-        <a href={`mailto:${site.email}`}>Email</a>
+      <div class="flex flex-wrap gap-x-5 gap-y-3 text-sm md:justify-end">
+        <a
+          class="hover:text-highlight inline-flex min-h-11 items-center"
+          href={`mailto:${site.email}`}
+        >
+          {UI_TEXT.footer.email}
+        </a>
         {
           socialLinks.map((link) => (
-            <a href={link.href} rel="me noopener noreferrer">
+            <a
+              class="hover:text-highlight inline-flex min-h-11 items-center"
+              href={link.href}
+              target="_blank"
+              rel="me noopener noreferrer"
+            >
               {link.label}
             </a>
           ))
         }
       </div>
-      <p>
+
+      <p class="text-on-deep/70 text-sm">
         &copy; {year}
-        {site.name}. All rights reserved.
+        {site.name}. {UI_TEXT.footer.rightsReserved}
       </p>
     </div>
   </div>

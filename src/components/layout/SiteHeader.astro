@@ -1,38 +1,36 @@
 ---
-import { primaryNavigation } from "../../data/site";
+import { UI_TEXT } from "../../constants/ui";
+import PrimaryNavigation from "../navigation/PrimaryNavigation.astro";
+import ThemeToggle from "../ui/ThemeToggle.astro";
 import Logo from "./Logo.astro";
-
-const normalizePath = (path: string) => path.replace(/\/+$/, "") || "/";
-const currentPath = normalizePath(Astro.url.pathname);
 ---
 
-<header>
-  <div>
-    <Logo size={68} />
+<header
+  class="elevation-header bg-deep text-on-deep border-on-deep/10 sticky top-0 z-50 border-b"
+>
+  <div
+    class="max-w-site mx-auto flex min-h-18 w-full items-center justify-between gap-4 px-4 py-2 sm:px-6 lg:px-8"
+  >
+    <Logo size={60} />
 
-    <nav>
-      <ul>
-        {
-          primaryNavigation.map((item) => {
-            const isCurrent = currentPath === normalizePath(item.href);
+    <div class="flex min-w-0 flex-1 items-center justify-end gap-2">
+      <PrimaryNavigation class="hidden min-w-0 flex-1 md:block" />
+      <ThemeToggle />
 
-            return (
-              <li>
-                <a
-                  href={item.href}
-                  class:list={[
-                    isCurrent
-                      ? "border-highlight bg-highlight text-deep"
-                      : "border-flame bg-accent hover:border-highlight hover:bg-accent-hover hover:text-deep text-white",
-                  ]}
-                >
-                  {item.label}
-                </a>
-              </li>
-            );
-          })
-        }
-      </ul>
-    </nav>
+      <details class="group relative md:hidden">
+        <summary
+          class="border-on-deep/20 rounded-control flex min-h-11 cursor-pointer list-none items-center gap-2 border px-4 py-2.5 font-semibold [&::-webkit-details-marker]:hidden"
+        >
+          <span aria-hidden="true">{UI_TEXT.symbols.menu}</span>
+          <span>{UI_TEXT.navigation.menu}</span>
+        </summary>
+
+        <div
+          class="elevation-card border-on-deep/15 bg-deep rounded-card absolute top-full right-0 mt-2 w-64 max-w-[calc(100vw-2rem)] border p-3"
+        >
+          <PrimaryNavigation variant="mobile" />
+        </div>
+      </details>
+    </div>
   </div>
 </header>
