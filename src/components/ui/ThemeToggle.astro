@@ -9,7 +9,7 @@ import { UI_TEXT } from "../../constants/ui";
   aria-label={UI_TEXT.theme.toggleLabel}
   aria-pressed="false"
   title={UI_TEXT.theme.switchToDark}
-  class="border-on-deep/20 text-on-deep hover:bg-on-deep/10 aria-pressed:border-highlight aria-pressed:bg-highlight aria-pressed:text-deep rounded-control inline-flex min-h-11 min-w-11 cursor-pointer items-center justify-center gap-2 border px-3 py-2 text-sm font-semibold transition-colors"
+  class="border-on-deep/20 text-on-deep hover:bg-on-deep/10 aria-pressed:border-highlight aria-pressed:bg-highlight aria-pressed:text-deep rounded-control pressable inline-flex min-h-11 min-w-11 cursor-pointer items-center justify-center gap-2 border px-3 py-2 text-sm font-semibold"
 >
   <span data-theme-icon aria-hidden="true">{UI_TEXT.symbols.darkMode}</span>
   <span class="hidden lg:inline">{UI_TEXT.theme.label}</span>
@@ -75,6 +75,10 @@ import { UI_TEXT } from "../../constants/ui";
     root.dataset.theme === THEME.dark ? THEME.dark : THEME.light;
 
   updateButtons(currentTheme());
+
+  requestAnimationFrame(() => {
+    root.classList.add("theme-ready");
+  });
 
   buttons.forEach((button) => {
     button.addEventListener("click", () => {

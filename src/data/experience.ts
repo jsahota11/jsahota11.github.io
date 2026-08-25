@@ -1,4 +1,3 @@
-
 import umComputerScienceLogo from "../assets/images/experience/um-computer-science-department.webp";
 import dataAnnotationLogo from "../assets/images/experience/dataannotation.webp";
 import umMathematicsLogo from "../assets/images/experience/um-mathematics-department.webp";
@@ -31,7 +30,7 @@ export const experiences: Experience[] = [
     organization: "Department of Computer Science, University of Manitoba",
     description:
       "Investigated computational geometry and optimization problems through an Undergraduate Student Research Award, developing algorithms and mathematical techniques under faculty supervision.",
-    logo: computerScienceLogo,
+    logo: umComputerScienceLogo,
     logoAlt: "University of Manitoba Department of Computer Science logo",
   },
   {
@@ -40,7 +39,7 @@ export const experiences: Experience[] = [
     organization: "Department of Mathematics, University of Manitoba",
     description:
       "Helped undergraduate students work through calculus, linear algebra, and introductory mathematics by clarifying concepts and guiding their problem-solving process.",
-    logo: mathematicsLogo,
+    logo: umMathematicsLogo,
     logoAlt: "University of Manitoba Department of Mathematics logo",
   },
   {
@@ -49,7 +48,7 @@ export const experiences: Experience[] = [
     organization: "Department of Mathematics, University of Manitoba",
     description:
       "Led tutorials, graded assignments, and supported students studying integration techniques, sequences and series, and applications of calculus.",
-    logo: mathematicsLogoAlt,
+    logo: umMathematicsLogoAlt,
     logoAlt: "University of Manitoba Department of Mathematics logo",
   },
 ];

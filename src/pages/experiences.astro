@@ -6,17 +6,17 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 ---
 
 <BaseLayout
-    title="Experience"
-    heading="Experience"
-    description="Work, undergraduate research, tutoring, and teaching experience."
+  title="Experience"
+  heading="Experience"
+  description="Work, undergraduate research, tutoring, and teaching experience."
 >
-    <PageContainer>
-        <div class="space-y-6">
-            {
-                experiences.map((experience) => (
-                    <ExperienceCard experience={experience} />
-                ))
-            }
-        </div>
-    </PageContainer>
+  <PageContainer>
+    <div class="space-y-6">
+      {
+        experiences.map((experience) => (
+          <ExperienceCard experience={experience} />
+        ))
+      }
+    </div>
+  </PageContainer>
 </BaseLayout>

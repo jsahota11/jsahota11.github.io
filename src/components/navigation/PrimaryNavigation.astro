@@ -3,8 +3,8 @@ import { UI_TEXT } from "../../constants/ui";
 import { primaryNavigation } from "../../data/site";
 
 interface Props {
-    variant?: "desktop" | "mobile";
-    class?: string;
+  variant?: "desktop" | "mobile";
+  class?: string;
 }
 
 const { variant = "desktop", class: className } = Astro.props;
@@ -13,42 +13,38 @@ const currentPath = normalizePath(Astro.url.pathname);
 ---
 
 <nav aria-label={UI_TEXT.navigation.primaryLabel} class={className}>
-    <ul
-        class:list={[
-            variant === "desktop"
-                ? "flex items-center justify-end gap-2 lg:gap-3"
-                : "grid gap-2",
-        ]}
-    >
-        {
-            primaryNavigation.map((item) => {
-                const isCurrent = currentPath === normalizePath(item.href);
+  <ul
+    class:list={[
+      variant === "desktop"
+        ? "flex items-center justify-end gap-2 lg:gap-3"
+        : "grid gap-2",
+    ]}
+  >
+    {
+      primaryNavigation.map((item) => {
+        const isCurrent = currentPath === normalizePath(item.href);
 
-                return (
-                    <li>
-                        <a
-                            href={item.href}
-                            aria-current={isCurrent ? "page" : undefined}
-                            class:list={[
-                                "rounded-control flex min-h-11 items-center border px-4 py-2.5 text-sm font-semibold transition-colors",
-                                variant === "desktop"
-                                    ? "justify-center"
-                                    : "justify-between",
-                                isCurrent
-                                    ? "border-highlight bg-highlight text-deep"
-                                    : "border-accent-strong bg-accent text-on-accent hover:border-highlight hover:bg-accent-hover hover:text-deep",
-                            ]}
-                        >
-                            {item.label}
-                            {variant === "mobile" && isCurrent && (
-                                <span aria-hidden="true">
-                                    {UI_TEXT.symbols.currentPage}
-                                </span>
-                            )}
-                        </a>
-                    </li>
-                );
-            })
-        }
-    </ul>
+        return (
+          <li>
+            <a
+              href={item.href}
+              aria-current={isCurrent ? "page" : undefined}
+              class:list={[
+                "pressable rounded-control flex min-h-11 items-center border px-4 py-2.5 text-sm font-semibold",
+                variant === "desktop" ? "justify-center" : "justify-between",
+                isCurrent
+                  ? "border-highlight bg-highlight text-deep"
+                  : "border-accent-strong bg-accent text-on-accent hover:border-highlight hover:bg-accent-hover hover:text-deep",
+              ]}
+            >
+              {item.label}
+              {variant === "mobile" && isCurrent && (
+                <span aria-hidden="true">{UI_TEXT.symbols.currentPage}</span>
+              )}
+            </a>
+          </li>
+        );
+      })
+    }
+  </ul>
 </nav>

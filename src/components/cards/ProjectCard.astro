@@ -5,7 +5,7 @@ import Card from "../ui/Card.astro";
 import type { Project } from "../../types/content";
 
 interface Props {
-    project: Project;
+  project: Project;
 }
 
 const { project } = Astro.props;
@@ -13,126 +13,114 @@ const hasMultipleImages = project.images.length > 1;
 ---
 
 <Card id={project.id} padding="none" class="overflow-hidden">
-    <div
-        class="bg-canvas-soft relative aspect-[4/3] overflow-hidden"
-        role="group"
-        aria-label={UI_TEXT.projects.previewsLabel(project.title)}
-        data-project-carousel={hasMultipleImages ? "" : undefined}
-    >
-        {
-            project.images.length > 0 ? (
-                project.images.map((image, index) => (
-                    <Image
-                        src={image.src}
-                        alt={image.alt}
-                        widths={[480, 720, 960]}
-                        sizes="(min-width: 1152px) 552px, (min-width: 768px) calc(50vw - 2.5rem), calc(100vw - 2rem)"
-                        loading="lazy"
-                        aria-hidden={index === 0 ? undefined : "true"}
-                        data-carousel-slide
-                        class:list={[
-                            "absolute inset-0 size-full object-contain p-3 transition-opacity duration-500",
-                            index === 0 ? "opacity-100" : "opacity-0",
-                        ]}
-                    />
-                ))
-            ) : (
-                <div class="text-ink/55 flex size-full items-center justify-center p-8 text-center text-sm font-semibold">
-                    {UI_TEXT.projects.previewUnavailable}
-                </div>
-            )
-        }
+  <div
+    class="bg-canvas-soft relative aspect-[4/3] overflow-hidden"
+    role="group"
+    aria-label={UI_TEXT.projects.previewsLabel(project.title)}
+    data-project-carousel={hasMultipleImages ? "" : undefined}
+  >
+    {
+      project.images.length > 0 ? (
+        project.images.map((image, index) => (
+          <Image
+            src={image.src}
+            alt={image.alt}
+            widths={[480, 720, 960]}
+            sizes="(min-width: 1152px) 552px, (min-width: 768px) calc(50vw - 2.5rem), calc(100vw - 2rem)"
+            loading="lazy"
+            aria-hidden={index === 0 ? undefined : "true"}
+            data-carousel-slide
+            class:list={[
+              "absolute inset-0 size-full object-contain p-3 transition-opacity duration-500",
+              index === 0 ? "opacity-100" : "opacity-0",
+            ]}
+          />
+        ))
+      ) : (
+        <div class="text-ink/55 flex size-full items-center justify-center p-8 text-center text-sm font-semibold">
+          {UI_TEXT.projects.previewUnavailable}
+        </div>
+      )
+    }
 
-        {
-            hasMultipleImages && (
-                <>
-                    <span
-                        data-carousel-status
-                        aria-live="polite"
-                        class="bg-deep/85 text-on-deep absolute bottom-3 left-3 rounded-full px-3 py-1.5 text-xs font-semibold"
-                    >
-                        1 / {project.images.length}
-                    </span>
-                    <button
-                        type="button"
-                        data-carousel-next
-                        aria-label={UI_TEXT.projects.nextPreviewLabel(
-                            project.title,
-                        )}
-                        class="bg-deep/85 text-on-deep hover:bg-accent hover:text-on-accent absolute right-3 bottom-3 min-h-11 rounded-full px-4 py-2 text-sm font-bold transition-colors"
-                    >
-                        {UI_TEXT.projects.nextPreview}
-                    </button>
-                </>
-            )
-        }
-    </div>
+    {
+      hasMultipleImages && (
+        <>
+          <span
+            data-carousel-status
+            aria-live="polite"
+            class="bg-deep/85 text-on-deep absolute bottom-3 left-3 rounded-full px-3 py-1.5 text-xs font-semibold"
+          >
+            1 / {project.images.length}
+          </span>
+          <button
+            type="button"
+            data-carousel-next
+            aria-label={UI_TEXT.projects.nextPreviewLabel(project.title)}
+            class="pressable bg-deep/85 text-on-deep hover:bg-accent hover:text-on-accent absolute right-3 bottom-3 min-h-11 rounded-full px-4 py-2 text-sm font-bold"
+          >
+            {UI_TEXT.projects.nextPreview}
+          </button>
+        </>
+      )
+    }
+  </div>
 
-    <div class="p-5 sm:p-6">
-        <h2 class="text-ink-muted text-2xl font-bold">{project.title}</h2>
-        <p class="text-ink/80 mt-3 leading-7 text-pretty">
-            {project.description}
-        </p>
+  <div class="p-5 sm:p-6">
+    <h2 class="text-ink-muted text-2xl font-bold">{project.title}</h2>
+    <p class="text-ink/80 mt-3 leading-7 text-pretty">
+      {project.description}
+    </p>
 
-        {
-            project.repositoryUrl ? (
-                <a
-                    href={project.repositoryUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    class="text-accent decoration-accent/40 hover:text-accent-hover mt-5 inline-flex items-center gap-1.5 font-bold underline underline-offset-4"
-                >
-                    {UI_TEXT.projects.viewOnGitHub}
-                    <span aria-hidden="true">
-                        {UI_TEXT.symbols.externalLink}
-                    </span>
-                </a>
-            ) : (
-                project.note && (
-                    <p class="text-ink/60 mt-5 text-sm italic">
-                        {project.note}
-                    </p>
-                )
-            )
-        }
-    </div>
+    {
+      project.repositoryUrl ? (
+        <a
+          href={project.repositoryUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="text-accent decoration-accent/40 hover:text-accent-hover mt-5 inline-flex items-center gap-1.5 font-bold underline underline-offset-4"
+        >
+          {UI_TEXT.projects.viewOnGitHub}
+          <span aria-hidden="true">{UI_TEXT.symbols.externalLink}</span>
+        </a>
+      ) : (
+        project.note && (
+          <p class="text-ink/60 mt-5 text-sm italic">{project.note}</p>
+        )
+      )
+    }
+  </div>
 </Card>
 
 <script>
-    document
-        .querySelectorAll<HTMLElement>("[data-project-carousel]")
-        .forEach((carousel) => {
-            const slides = Array.from(
-                carousel.querySelectorAll<HTMLElement>("[data-carousel-slide]"),
-            );
-            const nextButton = carousel.querySelector<HTMLButtonElement>(
-                "[data-carousel-next]",
-            );
-            const status = carousel.querySelector<HTMLElement>(
-                "[data-carousel-status]",
-            );
+  document
+    .querySelectorAll<HTMLElement>("[data-project-carousel]")
+    .forEach((carousel) => {
+      const slides = Array.from(
+        carousel.querySelectorAll<HTMLElement>("[data-carousel-slide]"),
+      );
+      const nextButton = carousel.querySelector<HTMLButtonElement>(
+        "[data-carousel-next]",
+      );
+      const status = carousel.querySelector<HTMLElement>(
+        "[data-carousel-status]",
+      );
 
-            if (slides.length < 2 || !nextButton || !status) return;
+      if (slides.length < 2 || !nextButton || !status) return;
 
-            let currentIndex = 0;
-            const showSlide = (nextIndex: number) => {
-                slides[currentIndex].classList.replace(
-                    "opacity-100",
-                    "opacity-0",
-                );
-                slides[currentIndex].setAttribute("aria-hidden", "true");
+      let currentIndex = 0;
+      const showSlide = (nextIndex: number) => {
+        slides[currentIndex].classList.replace("opacity-100", "opacity-0");
+        slides[currentIndex].setAttribute("aria-hidden", "true");
 
-                currentIndex = nextIndex;
-                slides[currentIndex].classList.replace(
-                    "opacity-0",
-                    "opacity-100",
-                );
-                slides[currentIndex].removeAttribute("aria-hidden");
-                status.textContent = `${currentIndex + 1} / ${slides.length}`;
-            };
+        currentIndex = nextIndex;
+        slides[currentIndex].classList.replace("opacity-0", "opacity-100");
+        slides[currentIndex].removeAttribute("aria-hidden");
+        status.textContent = `${currentIndex + 1} / ${slides.length}`;
+      };
 
-            nextButton.addEventListener("click", () =>
-                showSlide((currentIndex + 1) % slides.length),
-            );
-        });
+      nextButton.addEventListener("click", () =>
+        showSlide((currentIndex + 1) % slides.length),
+      );
+    });
 </script>

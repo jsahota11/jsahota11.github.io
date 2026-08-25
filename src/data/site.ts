@@ -11,7 +11,7 @@ export const site = {
 
 export const primaryNavigation: NavigationItem[] = [
   { label: "About", href: "/about/" },
-  { label: "Experience", href: "/work/" },
+  { label: "Experience", href: "/experiences/" },
   { label: "Projects", href: "/projects/" },
   { label: "Updates", href: "/updates/" },
   { label: "Contact", href: "/contact/" },
@@ -46,10 +46,11 @@ export const documentLinks: LinkItem[] = [
   },
   {
     label: "Scientific computing research paper [INACTIVE]",
-    description: "The published research paper from my Summer 2026 research experience (to be updated once paper is published)."
+    description:
+      "The published research paper from my Summer 2026 research experience (to be updated once paper is published).",
     href: "",
     newTab: false,
-  }
+  },
 ];
 
 export const contactLinks: LinkItem[] = [

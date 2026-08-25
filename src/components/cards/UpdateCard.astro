@@ -3,25 +3,25 @@ import Card from "../ui/Card.astro";
 import type { Update } from "../../types/content";
 
 interface Props {
-    update: Update;
+  update: Update;
 }
 
 const { update } = Astro.props;
 const formattedDate = new Intl.DateTimeFormat("en-CA", {
-    year: "numeric",
-    month: "long",
-    day: "numeric",
-    timeZone: "UTC",
+  year: "numeric",
+  month: "long",
+  day: "numeric",
+  timeZone: "UTC",
 }).format(new Date(`${update.date}T00:00:00Z`));
 ---
 
 <Card id={update.id}>
-    <time
-        datetime={update.date}
-        class="text-accent text-sm font-bold tracking-[0.16em] uppercase"
-    >
-        {formattedDate}
-    </time>
-    <h2 class="text-ink-muted mt-2 text-2xl font-bold">{update.title}</h2>
-    <p class="text-ink/80 mt-4 leading-8 text-pretty">{update.summary}</p>
+  <time
+    datetime={update.date}
+    class="text-accent text-sm font-bold tracking-[0.16em] uppercase"
+  >
+    {formattedDate}
+  </time>
+  <h2 class="text-ink-muted mt-2 text-2xl font-bold">{update.title}</h2>
+  <p class="text-ink/80 mt-4 leading-8 text-pretty">{update.summary}</p>
 </Card>
