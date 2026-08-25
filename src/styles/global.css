@@ -1,13 +1,47 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap');
+
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap");
 @import "tailwindcss";
 
 @theme {
-  --color-sitebg: #FFFFFF;
-  --color-text: #3C1518;
-  --color-textSecondary: #69140E;
-  --color-accent: #A44200;
-  --color-accentHover: #D58936;
-  --color-highlight: #F2F3AE;
-  --color-deep: #3C1518;
-  --color-flame: #E63900;
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+
+  --color-canvas: #ffffff;
+  --color-canvas-soft: #fff9f3;
+  --color-ink: #3c1518;
+  --color-ink-muted: #69140e;
+  --color-accent: #a44200;
+  --color-accent-hover: #d58936;
+  --color-highlight: #f2f3ae;
+  --color-deep: #3c1518;
+  --color-flame: #e63900;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    min-width: 20rem;
+    min-height: 100vh;
+    background: var(--color-canvas);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    text-rendering: optimizeLegibility;
+  }
+
+  a,
+  button {
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  :focus-visible {
+    outline: 3px solid var(--color-flame);
+    outline-offset: 3px;
+  }
+
+  ::selection {
+    background: var(--color-highlight);
+    color: var(--color-ink);
+  }
 }

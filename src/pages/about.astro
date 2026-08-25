@@ -1,97 +1,67 @@
 ---
-import Layout from "../layouts/Layout.astro";
+import PageContainer from "../components/layout/PageContainer.astro";
+import ContentSection from "../components/ui/ContentSection.astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
 ---
 
-<Layout title="About" local="A brief autobiography.">
-    <div class="pl-[2rem] pr-[2rem]">
-        <p id="hobbies" class="m-20">
-            Thanks for taking an interest in me! I'm a Computer Science and
-            Mathematics Joint Co-op student at the University of Manitoba, and
-            am always looking for ways to challenge myself and learn new things.
-            My choice of degree was purely out of interest, which currently lie
-            in algorithm design, low-level programming (specifically operating
-            systems), and topology. I love solving puzzles and optimizing
-            solutions as much as I can, I enjoy breaking down challenging
-            problems and designing elegant, efficient solutions, whether that
-            means analyzing algorithms on paper or coding out a practical
-            system. My journey into CS started with curiosity about how
-            computers really work under the hood — from the logic of algorithms
-            to the design of operating systems. Since then, I’ve built projects
-            in Java, Python, C/C++, and JavaScript, and I’m currently expanding
-            into frameworks like Next.js to bring my ideas to the web. I also
-            use LaTeX for research work, and I’m constantly optimizing my
-            workflow on Linux with tools like Neovim to keep things fast and
-            efficient. Beyond the technical side, I believe good software isn’t
-            just about code — it’s about clarity, usability, and robustness. I
-            strive to write programs that are easy to use, maintain, and extend.
-            For me, every project is a chance to learn and to push the limits of
-            what I know. When I’m not coding, you’ll usually find me
-            experimenting with new tools, customizing my development setup, or
-            exploring tech topics that blend theory with practice. Outside of
-            CS, I enjoy [insert hobbies here — e.g., reading, working out,
-            gaming, design — whatever feels natural to you]. This website is a
-            space where I share my projects, experiments, and ideas. If you’d
-            like to collaborate, learn more about my work, or just say hi — feel
-            free to reach out via [GitHub/email/LinkedIn]. Thanks for taking an
-            interest in me!<br />
-            I am currently based in Winnipeg, Manitoba and am studying at the University
-            of Manitoba. I was born and raised here, but would definitely like to
-            leave and live somewhere else at some point!<br />
-            I have always carried an interest in Math, and I found enjoyment in programming
-            through my high school curriculum. In my second year at the university,
-            I had originally<br />
-            planned to pursue a joint degree in Statistics and Computer Science,
-            but during my third year, I decided to switch to my current degree. I
-            enjoy the rigour and logical puzzles in mathematics.<br /><br />
+<BaseLayout
+    title="About"
+    heading="A brief autobiography"
+    description="How mathematics, computer science, research, and computer systems fit together for me."
+>
+    <PageContainer class="space-y-6">
+        <ContentSection id="background" title="Background">
+            <p>
+                I’m a Computer Science and Mathematics Joint Honours Co-op
+                student at the University of Manitoba, with a minor in
+                Statistics. I was born and raised in Winnipeg, and my choice of
+                degree has always been driven by passion: I enjoy the rigour of
+                mathematics and the process of turning an idea into a working
+                program.
+            </p>
+            <p>
+                My interest in computing began with programming in high school
+                and grew into a broader curiosity about how computers work—from
+                the logic of algorithms to the design of operating systems.
+            </p>
+        </ContentSection>
 
-            To reiterate, my interests for research lie in discrete algorithms
-            and computational geometry, as well as point-set topology and Number
-            Theory. I am interested in learning more about<br />
-            embedded and operating systems programming, as well as Crytography. I
-            also enjoy programming and building websites and applications, which
-            was something I began with almost 5 years ago.<br /><br />
+        <ContentSection id="interests" title="Technical interests">
+            <p>
+                My main academic interests include discrete algorithms,
+                computational geometry, and scientific computing. On the systems
+                side, I’m interested in low-level, operating-system, and
+                embedded programming.
+            </p>
+            <p>
+                I enjoy moving between theory and implementation: analyzing an
+                algorithm on paper, proving why it works, and then building a
+                clear, efficient implementation. I have worked with Java,
+                Python, C/C#/C++, JavaScript, and Julia. My IDE of choice is
+                Neovim.
+            </p>
+        </ContentSection>
 
-            At the moment, I am working remotely at DataAnotation, helping train
-            the next generation of AI models to help with tasks related to
-            coding and mathematics. This summer, I am slated to<br />
-            research alongside Dr. Stephane Durocher at the University of Manitoba,
-            where I will be selecting and researching an open problem related to
-            computational geometry and discrete optimization.<br /><br />
+        <ContentSection
+            id="research-and-teaching"
+            title="Research and teaching"
+        >
+            <p>
+                In Summer 2025, I researched a problem in computational geometry
+                and discrete optimization with Dr. Stéphane Durocher at the
+                University of Manitoba. I also enjoy teaching mathematics,
+                whether in tutorials, the Math Help Centre, or an informal
+                conversation about an interesting problem.
+            </p>
+        </ContentSection>
 
-            Currently, the only projects I have active are this website
-            (although, this will most likely be updated every once in a while),
-            and an online tool to generate and visualize graphs with different
-            properties.<br />
-            I aim to implement a search engine for the graph generator, allowing
-            the user to generate graphs by their title, like K12 for a Complete graph
-            on 12 vertices. This is still extremely early and almost completely unfinished.<br
-            /><br />
-
-            My motivation for studying math and computer science is pure
-            interest. While I really do enjoy programming, I find myself drawn
-            more towards theoretical mathematics, and the cross-sections between
-            math and theoretical computer science.<br />
-            These sorts of problems and puzzles are incredibly rewarding to research
-            and develop, and nothing is quite as intellectually stimulating. For
-            programming as well, I find that I prefer coding low-level applications
-            and software.<br />
-
-            Other than that, I like learning a lot, and so in my spare time I
-            may read a good textbook. If not, I am most likely working on
-            something to show you all! Recently I have had no time to work on
-            anything outside of school.<br />
-            If you want to know more about me as a person outside of this field,
-            I enjoy hanging out with my friends and socializing. Recently my favourite
-            foods have been pizza and burgers, which is quite the shift as for many
-            years I<br />
-            preferred asian cuisine; specifically Chinese and Indian food. I like
-            teaching people about math and theoretical computer science, because
-            it is so fun to talk about and to throw ideas around!
-        </p>
-
-        <p id="achievements" class="m-20">
-            This is where my achievements will go
-        </p>
-        <p id="goals" class="m-20">This is where my goals are.</p>
-    </div>
-</Layout>
+        <ContentSection id="outside-work" title="Outside the work">
+            <p>
+                Away from coursework and projects, I like reading (mostly
+                textbooks), going to the gym, refining my Linux environment, and
+                spending time with friends. This site is where I collect the
+                work I’m proud of and document what I learn next.
+            </p>
+        </ContentSection>
+    </PageContainer>
+</BaseLayout>

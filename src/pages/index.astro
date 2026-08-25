@@ -1,57 +1,26 @@
 ---
-import Layout from "../layouts/Layout.astro";
-import Hero from "../components/Hero.astro";
+import PageContainer from "../components/layout/PageContainer.astro";
+import ProfileIntro from "../components/sections/ProfileIntro.astro";
+import ContentSection from "../components/ui/ContentSection.astro";
+import LinkGrid from "../components/ui/LinkGrid.astro";
+import { documentLinks } from "../data/site";
+import BaseLayout from "../layouts/BaseLayout.astro";
 ---
 
-<Layout title="Home" local="Welcome!">
-	<div class="flex flex-row justify-around items-center bg-bg text-text">
-		<div class="inline-flex p-0 m-0 w-7/10 max-w-[600px]">
-			<!-- Little exerpt about me -->
-			<p class="bg-bg text-text">
-				Hey there! My name is Jatinder, and this is my personal webpage.
-				I am currently pursuing a Joint Honours degree in Computer
-				Science and Mathematics at the University of Manitoba, with a
-				minor in Statistics. More specifically, my interests lie in
-				discrete algorithms and computational geometry, as well as
-				Number theory and Topology. I also enjoy programming,
-				specifically low-level systems programming, and developed more
-				interest in programming embedded and operating systems.<br />
-				<br />
-				On this website, you will find information about myself, including
-				more about my own personal life and interests, projects and experiences,
-				as well as a deeper dive into my hobbies, interests, and motivation.
-				I encourage you stick around and read, and check back in every once
-				in a while to see how the site has changed. I will most likely add
-				a page for updates recently made to the website, or I may merge it
-				with the already existing Updates page. We will see! I will upload
-				my resume when it is updated.<br />
-				<br />
-				Thanks for reading,<br />
-				Jatinder<br />
-			</p>
-		</div>
+<BaseLayout
+  title="Home"
+  heading="Jatinder Sahota"
+  description="Computer Science, mathematics, research, and systems programming."
+>
+  <PageContainer>
+    <ProfileIntro />
 
-		<div class="inline-flex p-0 m-0 w-3/10 h-auto max-w-[400px]">
-			<Hero size="400" />
-		</div>
-	</div>
-	<div class="h-30"></div>
-	<div class="flex flex-row justify-around items-center bg-bg text-text">
-		<a
-			href="/cs_resume__proj_first__um_email.pdf"
-			target="_blank"
-			rel="noopener noreferrer"><u>Resume</u></a
-		>
-		<a href="/web-ts-nov-2025.pdf" target="_blank" rel="noopener noreferrer"
-			><u>Web Transcript</u></a
-		>
-		<a href="/poster.pdf" target="_blank" rel="noopener noreferrer"
-			><u>Summer 2025 Research Poster</u></a
-		>
-		<a
-			href="/research-writeup.pdf"
-			target="_blank"
-			rel="noopener noreferrer"><u>Summer 2025 Research Writeup</u></a
-		>
-	</div>
-</Layout>
+    <ContentSection id="documents" title="Documents">
+      <p>
+        Resume, academic record, and the results of my Summer 2025 research
+        project.
+      </p>
+      <LinkGrid items={documentLinks} />
+    </ContentSection>
+  </PageContainer>
+</BaseLayout>

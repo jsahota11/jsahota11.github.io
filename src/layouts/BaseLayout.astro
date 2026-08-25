@@ -1,8 +1,9 @@
 ---
-import Navbar from "../components/layout/Navbar.astro";
 import "../styles/global.css";
 import Footer from "../components/layout/Footer.astro";
 import { site } from "../data/site";
+import PageHeader from "../components/layout/PageHeader.astro";
+import SiteHeader from "../components/layout/SiteHeader.astro";
 
 interface Props {
 	title: string;
@@ -45,9 +46,12 @@ const canonicalUrl = new URL(Astro.url.pathname, Astro.site ?? site.url);
 	</head>
 
 	<body class="font-inter text-text bg-sitebg">
-		<Navbar />
+		<a href="#main-content">Skip to content</a>
+
+		<SiteHeader />
 
 		<main id="main-content">
+			<PageHeader heading={heading} description={description} />
 			<slot />
 		</main>
 

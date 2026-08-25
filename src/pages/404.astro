@@ -1,14 +1,26 @@
 ---
-import Layout from "../layouts/Layout.astro";
+import PageContainer from "../components/layout/PageContainer.astro";
+import ContentSection from "../components/ui/ContentSection.astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
 ---
 
-<Layout title="404" local="Uh oh!">
-    <p class="pl-[2rem] pr-[2rem]">
-        Error 404 encountered; hate when that happens!
-    </p>
-    <!-- Add the base if this crashes -->
-    <a href="/">
-        Click here to go home.
-    </a>
-
-</Layout>
+<BaseLayout
+  title="Page not found"
+  heading="Page not found"
+  description="The page you were looking for does not exist or may have moved."
+  noindex
+>
+  <PageContainer>
+    <ContentSection>
+      <p>
+        That link did not lead anywhere, but the rest of the site is still close
+        by!
+      </p>
+      <a
+        href="/"
+      >
+        Return home
+      </a>
+    </ContentSection>
+  </PageContainer>
+</BaseLayout>
