@@ -22,6 +22,7 @@ export interface Project {
   description: string;
   images: ProjectImage[];
   repositoryUrl?: string;
+  deployedUrl?: string;
   note?: string;
 }
 
@@ -32,6 +33,8 @@ export interface Experience {
   description: string;
   logo: ImageMetadata;
   logoAlt: string;
+  startDate: string;
+  endDate: string;
 }
 
 export interface Update {

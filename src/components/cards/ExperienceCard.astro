@@ -8,6 +8,18 @@ interface Props {
 }
 
 const { experience } = Astro.props;
+const dateFormat = new Intl.DateTimeFormat("en-CA", {
+  year: "numeric",
+  month: "long",
+  timeZone: "UTC",
+});
+
+const formattedStartDate = dateFormat.format(
+  new Date(`${experience.startDate}T00:00:00Z`),
+);
+const formattedEndDate = dateFormat.format(
+  new Date(`${experience.endDate}T00:00:00Z`),
+);
 ---
 
 <Card id={experience.id}>
@@ -17,6 +29,21 @@ const { experience } = Astro.props;
         {experience.organization}
       </p>
       <h2 class="text-ink-muted mt-2 text-2xl font-bold">{experience.role}</h2>
+
+      <time
+        datetime={experience.startDate}
+        class="text-accent text-sm font-bold tracking-[0.16em] uppercase"
+      >
+        {formattedStartDate}
+      </time>
+      <span>-</span>
+      <time
+        datetime={experience.startDate}
+        class="text-accent text-sm font-bold tracking-[0.16em] uppercase"
+      >
+        {formattedEndDate}
+      </time>
+
       <p class="text-ink/80 mt-4 leading-8 text-pretty">
         {experience.description}
       </p>

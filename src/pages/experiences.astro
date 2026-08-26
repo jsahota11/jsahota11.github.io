@@ -1,22 +1,50 @@
 ---
 import ExperienceCard from "../components/cards/ExperienceCard.astro";
 import PageContainer from "../components/layout/PageContainer.astro";
-import { experiences } from "../data/experience";
+import { workExperiences } from "../data/experience";
+import { educationExperiences } from "../data/experience";
 import BaseLayout from "../layouts/BaseLayout.astro";
+import ContentSection from "../components/ui/ContentSection.astro";
 ---
 
 <BaseLayout
   title="Experience"
   heading="Experience"
-  description="Work, undergraduate research, tutoring, and teaching experience."
+  description="Work, undergraduate research, tutoring/teaching, and education."
 >
   <PageContainer>
-    <div class="space-y-6">
-      {
-        experiences.map((experience) => (
-          <ExperienceCard experience={experience} />
-        ))
-      }
-    </div>
+    <ContentSection id="education" title="Education">
+      This is a record of my education, starting with university. My education
+      brings together mathematics and computer science, with a little bit of
+      Statistics sprinkled in! Ive learned lots about programming, theoretical
+      computer science, computer systems, applied and pure math, and scientific
+      computing!
+
+      <br />
+      <div class="space-y-6">
+        {
+          educationExperiences.map((experience) => (
+            <ExperienceCard experience={experience} />
+          ))
+        }
+      </div>
+    </ContentSection>
+  </PageContainer>
+
+  <PageContainer>
+    <ContentSection id="work" , title="Work Experience">
+      This is a record of my work experience, starting with my first job. My
+      experience has given me opportunities to apply technical knowledge to
+      practical problems while growing as a programmer, researcher, and
+      collaborator.
+      <br />
+      <div class="space-y-6">
+        {
+          workExperiences.map((experience) => (
+            <ExperienceCard experience={experience} />
+          ))
+        }
+      </div>
+    </ContentSection>
   </PageContainer>
 </BaseLayout>
