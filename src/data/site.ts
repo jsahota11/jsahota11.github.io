@@ -22,33 +22,37 @@ export const documentLinks: LinkItem[] = [
     label: "Resume",
     description:
       "A concise overview of my experience, education, and projects.",
-    href: "/cs_resume__proj_first__um_email.pdf",
+    href: "/resume.pdf",
     newTab: true,
+    preview: "pdf"
   },
   {
     label: "Web transcript",
     description: "My University of Manitoba academic record.",
-    href: "/web-ts-nov-2025.pdf",
+    href: "/transcript.pdf",
     newTab: true,
+    preview: "pdf"
   },
   {
     label: "Computational geometry research poster",
     description:
       "The poster from my Summer 2025 computational geometry research.",
-    href: "/poster.pdf",
+    href: "/usra2025-poster.pdf",
     newTab: true,
+    preview: "pdf"
   },
   {
     label: "Computational geometry research write-up",
     description: "The full write-up from my Summer 2025 research project.",
-    href: "/research-writeup.pdf",
+    href: "/usra2025-writeup.pdf",
     newTab: true,
+    preview: "pdf"
   },
   {
-    label: "Scientific computing research paper [INACTIVE]",
+    label: "Scientific computing research paper [in progress]",
     description:
       "The published research paper from my Summer 2026 research experience (to be updated once paper is published).",
-    href: "",
+    href: null,
     newTab: false,
   },
 ];

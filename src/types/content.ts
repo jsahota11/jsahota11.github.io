@@ -8,6 +8,7 @@ export interface NavigationItem {
 export interface LinkItem extends NavigationItem {
   description: string;
   newTab?: boolean;
+  preview?: string;
 }
 
 export interface ProjectImage {

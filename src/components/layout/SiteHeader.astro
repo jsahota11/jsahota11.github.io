@@ -6,12 +6,16 @@ import Logo from "./Logo.astro";
 ---
 
 <header
-  class="elevation-header bg-deep text-on-deep border-on-deep/10 sticky top-0 z-50 border-b"
+  class="elevation-header bg-deep text-on-deep border-on-deep/10 sticky top-0 z-50 overflow-visible border-b"
 >
   <div
     class="max-w-site mx-auto flex min-h-18 w-full items-center justify-between gap-4 px-4 py-2 sm:px-6 lg:px-8"
   >
-    <Logo size={60} />
+    <div
+      class="header-logo relative z-10 -mb-3 translate-y-1 self-start sm:-mb-7 sm:-translate-y-1"
+    >
+      <Logo size={85} />
+    </div>
 
     <div class="flex min-w-0 flex-1 items-center justify-end gap-2">
       <PrimaryNavigation class="hidden min-w-0 flex-1 md:block" />

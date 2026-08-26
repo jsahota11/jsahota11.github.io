@@ -3,6 +3,10 @@ import { Image } from "astro:assets";
 import portrait from "../../assets/images/profile/portrait.webp";
 import { UI_TEXT } from "../../constants/ui";
 import ButtonLink from "../ui/ButtonLink.astro";
+import { socialLinks } from "../../data/site";
+
+const linkedIn = socialLinks.find((link) => link.label === "LinkedIn");
+const github = socialLinks.find((link) => link.label === "GitHub");
 ---
 
 <section
@@ -11,20 +15,46 @@ import ButtonLink from "../ui/ButtonLink.astro";
   <div class="text-ink/85 space-y-6 text-base leading-8 text-pretty sm:text-lg">
     <p>
       Hey there! I’m Jatinder, a Computer Science and Mathematics Joint Honours
-      Co-op student at the University of Manitoba, with a minor in Statistics.
+      Co-op student at the University of Manitoba, minoring in Statistics.
     </p>
     <p>
-      My interests span discrete algorithms, computational geometry, number
-      theory, topology, and low-level systems programming. I especially enjoy
-      problems that connect mathematical reasoning with careful, efficient
-      implementation.
+      My interests span discrete algorithms, computational geometry, scientific
+      computing and low-level programming. I especially enjoy finding analytic
+      solutions to problems and implementing them.
     </p>
     <p>
-      This site brings together my projects, research, work and teaching
-      experience, and a few useful documents. It will keep evolving as I learn
-      and build more.
+      This site brings together my projects, research, work, teaching
+      experience, and education, as well as a few useful documents. It will keep
+      evolving as I learn and build more.
     </p>
-
+    <p>
+      If you want to see what I’ve been up to recently, check out my
+      {
+        linkedIn && (
+          <a
+            href={linkedIn.href}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="text-accent hover:text-accent-hover focus-visible:outline-accent inline-flex items-center gap-1 font-semibold underline decoration-2 underline-offset-4 transition-colors focus-visible:rounded-sm focus-visible:outline-2 focus-visible:outline-offset-2"
+          >
+            {linkedIn.label}↗
+          </a>
+        )
+      }
+      {linkedIn && github && <span> and </span>}
+      {
+        github && (
+          <a
+            href={github.href}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="text-accent hover:text-accent-hover focus-visible:outline-accent inline-flex items-center gap-1 font-semibold underline decoration-2 underline-offset-4 transition-colors focus-visible:rounded-sm focus-visible:outline-2 focus-visible:outline-offset-2"
+          >
+            {github.label}↗
+          </a>
+        )
+      }!
+    </p>
     <div class="flex flex-col gap-3 pt-2 sm:flex-row sm:flex-wrap">
       <ButtonLink href="/projects/" class="w-full sm:w-auto">
         {UI_TEXT.actions.viewProjects}

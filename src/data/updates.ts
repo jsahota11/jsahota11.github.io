@@ -2,6 +2,12 @@ import type { Update } from "../types/content";
 
 export const updates: Update[] = [
   {
+    id: "major-site-overhaul",
+    date: "2026-08-25",
+    title: "Major overhaul to the website",
+    summary: "Updated resume and transcript, implemented a huge visual overhaul, and updated webpage contents."
+  },
+  {
     id: "documents-added",
     date: "2025-09-28",
     title: "Professional and research documents added",

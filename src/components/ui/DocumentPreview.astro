@@ -1,0 +1,120 @@
+---
+import { UI_TEXT } from "../../constants/ui";
+---
+
+<dialog
+  data-document-dialog
+  aria-labelledby="document-preview-title"
+  class="text-ink m-auto h-[90dvh] w-[calc(100vw-2rem)] max-w-6xl overflow-visible bg-transparent p-0 backdrop:bg-black/75"
+>
+  <div class="surface-card flex h-full flex-col overflow-hidden">
+    <header
+      class="border-ink/10 flex shrink-0 items-center justify-between gap-4 border-b p-4"
+    >
+      <h2
+        id="document-preview-title"
+        data-document-title
+        class="text-ink-muted min-w-0 truncate text-lg font-bold sm:text-xl"
+      >
+        {UI_TEXT.documents.previewTitle}
+      </h2>
+
+      <form method="dialog">
+        <button
+          type="submit"
+          autofocus
+          aria-label={UI_TEXT.documents.closePreview}
+          class="pressable bg-accent text-on-accent hover:bg-accent-hover hover:text-deep rounded-control min-h-11 px-4 text-sm font-bold"
+        >
+          {UI_TEXT.documents.close}
+        </button>
+      </form>
+    </header>
+
+    <iframe
+      data-document-frame
+      title={UI_TEXT.documents.previewTitle}
+      class="bg-surface min-h-0 w-full flex-1 border-0"></iframe>
+
+    <footer
+      class="border-ink/10 bg-surface flex shrink-0 justify-end border-t p-3"
+    >
+      <a
+        data-document-open
+        href="/"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="pressable border-accent text-accent hover:bg-highlight hover:text-deep rounded-control inline-flex min-h-11 items-center justify-center border px-4 py-2 text-sm font-bold"
+      >
+        {UI_TEXT.documents.openOriginal}
+        <span aria-hidden="true" class="ml-1.5">
+          {UI_TEXT.symbols.externalLink}
+        </span>
+      </a>
+    </footer>
+  </div>
+</dialog>
+
+<script>
+  import { UI_TEXT } from "../../constants/ui";
+
+  const dialog = document.querySelector<HTMLDialogElement>(
+    "[data-document-dialog]",
+  );
+  const frame = dialog?.querySelector<HTMLIFrameElement>(
+    "[data-document-frame]",
+  );
+  const title = dialog?.querySelector<HTMLElement>("[data-document-title]");
+  const openLink = dialog?.querySelector<HTMLAnchorElement>(
+    "[data-document-open]",
+  );
+
+  let activeTrigger: HTMLAnchorElement | null = null;
+
+  if (
+    dialog &&
+    frame &&
+    title &&
+    openLink &&
+    typeof dialog.showModal === "function"
+  ) {
+    document
+      .querySelectorAll<HTMLAnchorElement>("[data-document-preview]")
+      .forEach((trigger) => {
+        trigger.addEventListener("click", (event) => {
+          if (
+            event.button !== 0 ||
+            event.ctrlKey ||
+            event.metaKey ||
+            event.shiftKey ||
+            event.altKey
+          ) {
+            return;
+          }
+
+          event.preventDefault();
+
+          activeTrigger = trigger;
+          const documentTitle =
+            trigger.dataset.documentTitle ?? UI_TEXT.documents.previewTitle;
+
+          title.textContent = documentTitle;
+          frame.title = UI_TEXT.documents.viewerTitle(documentTitle);
+          frame.src = trigger.href;
+          openLink.href = trigger.href;
+
+          dialog.showModal();
+        });
+      });
+
+    dialog.addEventListener("click", (event) => {
+      if (event.target === dialog) dialog.close();
+    });
+
+    dialog.addEventListener("close", () => {
+      frame.removeAttribute("src");
+      activeTrigger?.focus();
+      activeTrigger = null;
+    });
+  }
+</script>

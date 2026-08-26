@@ -21,6 +21,13 @@ export const UI_TEXT = {
       `Show next preview for ${projectTitle}`,
     viewOnGitHub: "View on GitHub",
   },
+documents: {
+  previewTitle: "Document preview",
+  viewerTitle: (documentTitle: string) => `${documentTitle} PDF preview`,
+  close: "Close",
+  closePreview: "Close document preview",
+  openOriginal: "Open PDF in a new tab",
+},
   footer: {
     email: "Email",
     rightsReserved: "All rights reserved.",
@@ -38,6 +45,7 @@ export const UI_TEXT = {
     currentPage: "•",
     darkMode: "☾",
     lightMode: "☀",
+preview: "◫",
   },
 } as const;
 

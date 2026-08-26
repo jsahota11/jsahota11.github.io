@@ -46,10 +46,20 @@
 
   @media (hover: hover) {
     .site-logo:hover {
-      transform: scale(1.15) rotate(-3deg);
-      filter: drop-shadow(0 0 0.65rem var(--color-accent-hover));
+      transform: scale(1.7);
     }
   }
+
+.header-logo .site-logo {
+  transform-origin: top left;
+}
+
+@media (hover: hover) {
+  .header-logo .site-logo:hover {
+    transform: scale(1.4);
+    filter: none;
+  }
+}
 
   .pressable:active {
     transform: translateY(0.125rem) scale(0.98);

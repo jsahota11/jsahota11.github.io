@@ -17,6 +17,9 @@ const { items } = Astro.props;
           href={item.href}
           target={item.newTab ? "_blank" : undefined}
           rel={item.newTab ? "noopener noreferrer" : undefined}
+          data-document-preview={item.preview === "pdf" ? "" : undefined}
+          data-document-title={item.preview === "pdf" ? item.label : undefined}
+          aria-haspopup={item.preview === "pdf" ? "dialog" : undefined}
           class="surface-card surface-card-interactive pressable group border-ink/15 hover:border-accent flex h-full min-w-0 items-start justify-between gap-4 p-5"
         >
           <span class="min-w-0">
@@ -28,9 +31,11 @@ const { items } = Astro.props;
             </span>
           </span>
           <span aria-hidden="true" class="text-accent mt-0.5 text-xl">
-            {item.newTab
-              ? UI_TEXT.symbols.externalLink
-              : UI_TEXT.symbols.internalLink}
+            {item.preview === "pdf"
+              ? UI_TEXT.symbols.preview
+              : item.newTab
+                ? UI_TEXT.symbols.externalLink
+                : UI_TEXT.symbols.internalLink}
           </span>
         </a>
       </li>
