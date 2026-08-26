@@ -22,6 +22,7 @@ export const projects: Project[] = [
     title: "Formula 1 Database",
     description: "Course group project. A database to query Formula 1 data spanning many years.",
     note: "Coursework; source is not publicly available. Built with Java, using a SQL database, and supports a large variety of different queries!",
+    repositoryUrl: "https://github.com/jsahota11/databases-group-proj",
     images: [
       {
         src: f1dbMainMenu,
@@ -48,12 +49,12 @@ export const projects: Project[] = [
     note: "Coursework; source is not publicly available.",
     images: [
       {
-        src: caroracleLogin,
-        alt: "CarOracle login page"
-      },
-      {
         src: caroracleHome,
         alt: "CarOracle home page"
+      },
+      {
+        src: caroracleLogin,
+        alt: "CarOracle login page"
       },
       {
         src: caroracleResults,
@@ -74,12 +75,12 @@ export const projects: Project[] = [
     deployedUrl: "https://graph-generator-beta.vercel.app/",
     images: [
       {
-        src: graphForm,
-        alt: "Graph Visualizer input form",
-      },
-      {
         src: graphConstruct,
         alt: "A graph constructed in Graph Visualizer",
+      },
+      {
+        src: graphForm,
+        alt: "Graph Visualizer input form",
       },
       {
         src: graphAlt,
