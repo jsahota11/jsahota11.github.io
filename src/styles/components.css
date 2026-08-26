@@ -46,7 +46,7 @@
 
   @media (hover: hover) {
     .site-logo:hover {
-      transform: scale(1.7);
+      transform: scale(1.2);
     }
   }
 
@@ -56,7 +56,7 @@
 
 @media (hover: hover) {
   .header-logo .site-logo:hover {
-    transform: scale(1.4);
+    transform: scale(1.5);
     filter: none;
   }
 }
